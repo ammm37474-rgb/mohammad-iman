@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>محمد ایمان | قبله‌نما، تسبیح و پاسخ‌های فقهی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-950:#07211f;
+    --teal-900:#0c2e2b;
+    --teal-800:#123f3a;
+    --teal-700:#1a554d;
+    --gold-500:#c8992f;
+    --gold-300:#e3c270;
+    --parchment:#f3ead4;
+    --parchment-dim:#e6dabe;
+    --maroon:#7a2331;
+    --ink:#1c1410;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(circle at 15% 0%, rgba(200,153,47,0.12), transparent 45%),
+      radial-gradient(circle at 100% 100%, rgba(122,35,49,0.18), transparent 50%),
+      var(--teal-950);
+    color:var(--parchment);
+    font-family:'Vazirmatn', sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .star-pattern{
+    position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;
+    background-image:
+      repeating-linear-gradient(45deg, var(--gold-500) 0 1px, transparent 1px 60px),
+      repeating-linear-gradient(-45deg, var(--gold-500) 0 1px, transparent 1px 60px);
+  }
+  header{
+    position:relative;z-index:1;
+    text-align:center;
+    padding:34px 16px 18px;
+  }
+  header .eyebrow{
+    font-size:13px;letter-spacing:.4em;color:var(--gold-300);
+    text-transform:uppercase;margin-bottom:6px;
+  }
+  header h1{
+    font-family:'Lalezar', sans-serif;
+    font-weight:400;
+    font-size:42px;
+    margin:0;
+    color:var(--parchment);
+    text-shadow:0 0 24px rgba(200,153,47,0.35);
+  }
+  header p{color:var(--parchment-dim);font-size:14px;margin-top:8px;}
+
+  nav{
+    position:relative;z-index:1;
+    display:flex;justify-content:center;gap:8px;
+    flex-wrap:wrap;
+    padding:0 14px 20px;
+    max-width:680px;margin:0 auto;
+  }
+  nav button{
+    font-family:'Vazirmatn', sans-serif;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(227,194,112,0.25);
+    color:var(--parchment-dim);
+    padding:10px 18px;border-radius:999px;
+    font-size:14px;cursor:pointer;
+    transition:.2s;
+  }
+  nav button.active{
+    background:linear-gradient(135deg, var(--gold-500), #a87a1f);
+    color:var(--ink);border-color:transparent;font-weight:700;
+  }
+  nav button:hover:not(.active){border-color:var(--gold-300);}
+
+  main{
+    position:relative;z-index:1;
+    max-width:680px;margin:0 auto;padding:0 16px;
+  }
+  .panel{
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+    border:1px solid rgba(227,194,112,0.18);
+    border-radius:var(--radius);
+    padding:26px;
+    display:none;
+  }
+  .panel.active{display:block;animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  h2{font-family:'Lalezar', sans-serif;font-weight:400;font-size:24px;color:var(--gold-300);margin:0 0 16px;}
+
+  /* قبله نما */
+  .compass-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .compass{
+    width:260px;height:260px;border-radius:50%;
+    background:radial-gradient(circle at 50% 40%, var(--teal-700), var(--teal-900));
+    border:3px solid var(--gold-500);
+    position:relative;
+    box-shadow:0 0 40px rgba(200,153,47,0.15) inset, 0 10px 30px rgba(0,0,0,0.4);
+  }
+  .compass .ring{
+    position:absolute;inset:14px;border-radius:50%;
+    border:1px dashed rgba(227,194,112,0.3);
+  }
+  .needle{
+    position:absolute;left:50%;top:50%;
+    width:4px;height:108px;
+    background:linear-gradient(to top, var(--maroon), var(--gold-300));
+    transform-origin:bottom center;
+    transform:translate(-50%,-100%) rotate(0deg);
+    border-radius:4px;
+    transition:transform .25s ease-out;
+  }
+  .needle::after{
+    content:'🕋';position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:20px;
+  }
+  .compass-center{
+    position:absolute;left:50%;top:50%;width:14px;height:14px;
+    background:var(--gold-300);border-radius:50%;transform:translate(-50%,-50%);
+  }
+  .compass-label{position:absolute;font-size:12px;color:var(--gold-300);font-weight:700;}
+  .lbl-n{top:8px;left:50%;transform:translateX(-50%);}
+  .lbl-s{bottom:8px;left:50%;transform:translateX(-50%);}
+  .lbl-e{right:8px;top:50%;transform:translateY(-50%);}
+  .lbl-w{left:8px;top:50%;transform:translateY(-50%);}
+  .qibla-info{text-align:center;color:var(--parchment-dim);font-size:14px;line-height:2;}
+  .qibla-info b{color:var(--gold-300);font-size:18px;}
+  .btn{
+    background:linear-gradient(135deg, var(--gold-500), #a87a1f);
+    color:var(--ink);border:none;padding:12px 26px;border-radius:999px;
+    font-family:'Vazirmatn',sans-serif;font-weight:700;font-size:15px;cursor:pointer;
+  }
+  .btn:disabled{opacity:.5;cursor:not-allowed;}
+  .note{font-size:12.5px;color:var(--parchment-dim);opacity:.75;text-align:center;margin-top:10px;line-height:1.9;}
+
+  /* تسبیح */
+  .tasbeeh-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .dhikr-select{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+  .dhikr-select button{
+    background:rgba(255,255,255,0.05);border:1px solid rgba(227,194,112,0.25);
+    color:var(--parchment-dim);padding:8px 16px;border-radius:12px;font-family:'Vazirmatn',sans-serif;
+    font-size:14px;cursor:pointer;
+  }
+  .dhikr-select button.active{background:var(--teal-700);color:var(--gold-300);border-color:var(--gold-300);}
+  .counter-circle{
+    width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle at 50% 35%, var(--teal-700), var(--teal-900));
+    border:3px solid var(--gold-500);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    cursor:pointer;user-select:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    transition:transform .08s;
+  }
+  .counter-circle:active{transform:scale(0.96);}
+  .counter-circle .num{font-size:54px;font-weight:800;color:var(--gold-300);font-family:'Lalezar',sans-serif;}
+  .counter-circle .dhikr-text{font-size:16px;color:var(--parchment-dim);margin-top:4px;}
+  .tasbeeh-actions{display:flex;gap:10px;}
+  .btn-ghost{
+    background:transparent;border:1px solid rgba(227,194,112,0.4);color:var(--parchment-dim);
+    padding:10px 20px;border-radius:999px;font-family:'Vazirmatn',sans-serif;cursor:pointer;
+  }
+
+  /* پرسش و پاسخ */
+  .qa-source{font-size:13px;color:var(--gold-300);background:rgba(200,153,47,0.08);
+    border:1px solid rgba(200,153,47,0.25);padding:10px 14px;border-radius:10px;margin-bottom:16px;line-height:1.9;}
+  textarea{
+    width:100%;min-height:90px;background:rgba(255,255,255,0.04);
+    border:1px solid rgba(227,194,112,0.25);border-radius:12px;color:var(--parchment);
+    font-family:'Vazirmatn',sans-serif;font-size:15px;padding:14px;resize:vertical;
+  }
+  textarea:focus{outline:none;border-color:var(--gold-300);}
+  .qa-actions{display:flex;justify-content:flex-end;margin-top:10px;}
+  .answer-box{
+    margin-top:18px;background:rgba(255,255,255,0.03);border-radius:14px;
+    border:1px solid rgba(227,194,112,0.15);padding:18px;line-height:2.1;font-size:15px;
+    display:none;white-space:pre-wrap;
+  }
+  .answer-box.show{display:block;animation:fadeIn .3s ease;}
+  .loading{display:flex;align-items:center;gap:10px;color:var(--gold-300);font-size:14px;margin-top:14px;display:none;}
+  .loading.show{display:flex;}
+  .spinner{width:16px;height:16px;border:2px solid rgba(227,194,112,0.3);border-top-color:var(--gold-300);
+    border-radius:50%;animation:spin .8s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .disclaimer{font-size:12px;color:var(--parchment-dim);opacity:.65;margin-top:14px;line-height:1.9;text-align:center;}
+</style>
+</head>
+<body>
+<div class="star-pattern"></div>
+
+<header>
+  <div class="eyebrow">یار همراه عبادت</div>
+  <h1>محمد ایمان</h1>
+  <p>قبله‌نما · تسبیح دیجیتال · فقه شافعی · پاسخ به شبهات</p>
+</header>
+
+<nav>
+  <button class="tab-btn active" data-tab="qibla">قبله‌نما</button>
+  <button class="tab-btn" data-tab="tasbeeh">تسبیح</button>
+  <button class="tab-btn" data-tab="fiqh">فقه شافعی</button>
+  <button class="tab-btn" data-tab="shubuhat">رد شبهات</button>
+</nav>
+
+<main>
+
+  <!-- قبله نما -->
+  <section class="panel active" id="qibla">
+    <h2>قبله‌نما</h2>
+    <div class="compass-wrap">
+      <div class="compass" id="compassEl">
+        <div class="ring"></div>
+        <span class="compass-label lbl-n">شمال</span>
+        <span class="compass-label lbl-s">جنوب</span>
+        <span class="compass-label lbl-e">شرق</span>
+        <span class="compass-label lbl-w">غرب</span>
+        <div class="needle" id="needle"></div>
+        <div class="compass-center"></div>
+      </div>
+      <div class="qibla-info" id="qiblaInfo">برای فعال‌سازی قبله‌نما دکمه زیر را بزنید.</div>
+      <button class="btn" id="startCompass">فعال‌سازی قبله‌نما</button>
+      <div class="note">دستگاه را صاف نگه دارید و دور از فلز و آهن‌ربا باشید. عقربه طلایی جهت کعبه را نشان می‌دهد. این قابلیت نیاز به دسترسی به موقعیت مکانی و قطب‌نمای گوشی دارد.</div>
+    </div>
+  </section>
+
+  <!-- تسبیح -->
+  <section class="panel" id="tasbeeh">
+    <h2>تسبیح دیجیتال</h2>
+    <div class="tasbeeh-wrap">
+      <div class="dhikr-select" id="dhikrSelect">
+        <button class="active" data-dhikr="سبحان الله">سبحان الله</button>
+        <button data-dhikr="الحمد لله">الحمد لله</button>
+        <button data-dhikr="الله أكبر">الله أكبر</button>
+        <button data-dhikr="لا إله إلا الله">لا إله إلا الله</button>
+        <button data-dhikr="أستغفر الله">أستغفر الله</button>
+      </div>
+      <div class="counter-circle" id="counterCircle">
+        <div class="num" id="counterNum">۰</div>
+        <div class="dhikr-text" id="counterDhikr">سبحان الله</div>
+      </div>
+      <div class="tasbeeh-actions">
+        <button class="btn-ghost" id="resetBtn">بازنشانی</button>
+        <button class="btn-ghost" id="undoBtn">↺ یک واحد کم کن</button>
+      </div>
+      <div class="note">روی دایره بزنید تا شمارش شود. شمارش هر ذکر به‌صورت جداگانه ذخیره می‌شود.</div>
+    </div>
+  </section>
+
+  <!-- فقه شافعی -->
+  <section class="panel" id="fiqh">
+    <h2>پرسش فقهی بر مذهب امام شافعی</h2>
+    <div class="qa-source">منبع پاسخ‌ها: کتاب «الفقه المنهجی علی مذهب الإمام الشافعی» (دکتر مصطفی خِن، مصطفی البُغا، علی شربجی)</div>
+    <textarea id="fiqhInput" placeholder="مثلاً: حکم وضو با لاک ناخن چیست؟ یا شرایط صحت نماز جماعت کدام است؟"></textarea>
+    <div class="qa-actions"><button class="btn" id="fiqhAsk">پرسیدن سؤال</button></div>
+    <div class="loading" id="fiqhLoading"><div class="spinner"></div> در حال یافتن پاسخ بر اساس فقه شافعی...</div>
+    <div class="answer-box" id="fiqhAnswer"></div>
+    <div class="disclaimer">این پاسخ‌ها صرفاً جنبه آموزشی دارند و جایگزین مشورت با اهل علم و مفتی نیستند. برای مسائل مهم و سرنوشت‌ساز حتماً با عالم دین مشورت کنید.</div>
+  </section>
+
+  <!-- رد شبهات -->
+  <section class="panel" id="shubuhat">
+    <h2>پاسخ به شبهات</h2>
+    <div class="qa-source">منبع پاسخ‌ها: رویکرد «موسوعة بیان الإسلام للرد علی الافتراءات والشبهات» — اثر جمعی از علمای امت</div>
+    <textarea id="shubuhatInput" placeholder="شبهه یا سؤال خود را بنویسید، مثلاً: شبهه‌ای درباره چندهمسری در اسلام شنیده‌ام..."></textarea>
+    <div class="qa-actions"><button class="btn" id="shubuhatAsk">پرسیدن سؤال</button></div>
+    <div class="loading" id="shubuhatLoading"><div class="spinner"></div> در حال تدوین پاسخ مستدل...</div>
+    <div class="answer-box" id="shubuhatAnswer"></div>
+    <div class="disclaimer">پاسخ‌ها با رویکرد علمی و مستند ارائه می‌شوند. برای مطالعه عمیق‌تر به منابع اصلی مراجعه کنید.</div>
+  </section>
+
+</main>
+
+<script>
+// ---------- ناوبری تب‌ها ----------
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// ---------- قبله نما ----------
+const KAABA = {lat:21.4225, lng:39.8262};
+let qiblaBearing = null;
+let currentHeading = 0;
+
+function toRad(d){return d*Math.PI/180;}
+function toDeg(r){return r*180/Math.PI;}
+
+function calcQiblaBearing(lat, lng){
+  const phi1 = toRad(lat), phi2 = toRad(KAABA.lat);
+  const dLambda = toRad(KAABA.lng - lng);
+  const y = Math.sin(dLambda)*Math.cos(phi2);
+  const x = Math.cos(phi1)*Math.sin(phi2) - Math.sin(phi1)*Math.cos(phi2)*Math.cos(dLambda);
+  let brng = toDeg(Math.atan2(y,x));
+  return (brng + 360) % 360;
+}
+
+function updateNeedle(){
+  if(qiblaBearing===null) return;
+  const rotation = qiblaBearing - currentHeading;
+  document.getElementById('needle').style.transform = `translate(-50%,-100%) rotate(${rotation}deg)`;
+}
+
+function handleOrientation(e){
+  let heading;
+  if (e.webkitCompassHeading !== undefined){
+    heading = e.webkitCompassHeading; // iOS
+  } else if (e.alpha !== null){
+    heading = 360 - e.alpha; // Android approx
+  } else { return; }
+  currentHeading = heading;
+  updateNeedle();
+}
+
+document.getElementById('startCompass').addEventListener('click', async ()=>{
+  const info = document.getElementById('qiblaInfo');
+  info.textContent = 'در حال دریافت موقعیت مکانی...';
+  if(!navigator.geolocation){
+    info.textContent = 'مرورگر شما از موقعیت‌یابی پشتیبانی نمی‌کند.';
+    return;
+  }
+  navigator.geolocation.getCurrentPosition(async (pos)=>{
+    const {latitude, longitude} = pos.coords;
+    qiblaBearing = calcQiblaBearing(latitude, longitude);
+    info.innerHTML = `جهت قبله: <b>${qiblaBearing.toFixed(1)}°</b> از شمال جغرافیایی`;
+
+    // درخواست دسترسی به قطب‌نمای دستگاه (iOS 13+)
+    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
+      try{
+        const res = await DeviceOrientationEvent.requestPermission();
+        if(res === 'granted'){
+          window.addEventListener('deviceorientation', handleOrientation, true);
+        } else {
+          info.innerHTML += '<br>دسترسی به قطب‌نما رد شد؛ فقط زاویه قبله نمایش داده می‌شود.';
+        }
+      }catch(err){
+        info.innerHTML += '<br>قطب‌نمای دستگاه در دسترس نیست.';
+      }
+    } else if ('ondeviceorientationabsolute' in window){
+      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
+    } else if ('ondeviceorientation' in window){
+      window.addEventListener('deviceorientation', handleOrientation, true);
+    } else {
+      info.innerHTML += '<br>این دستگاه قطب‌نما ندارد؛ فقط زاویه قبله نمایش داده می‌شود.';
+    }
+    updateNeedle();
+  }, (err)=>{
+    info.textContent = 'دسترسی به موقعیت مکانی رد شد یا در دسترس نیست.';
+  });
+});
+
+// ---------- تسبیح ----------
+let currentDhikr = 'سبحان الله';
+let counts = {};
+
+const toFaDigits = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+
+async function loadCounts(){
+  try{
+    const result = await window.storage.get('tasbeeh-counts');
+    counts = result ? JSON.parse(result.value) : {};
+  }catch(e){ counts = {}; }
+  renderCounter();
+}
+async function saveCounts(){
+  try{ await window.storage.set('tasbeeh-counts', JSON.stringify(counts)); }catch(e){}
+}
+function renderCounter(){
+  const c = counts[currentDhikr] || 0;
+  document.getElementById('counterNum').textContent = toFaDigits(c);
+  document.getElementById('counterDhikr').textContent = currentDhikr;
+}
+document.getElementById('dhikrSelect').addEventListener('click', (e)=>{
+  if(e.target.tagName !== 'BUTTON') return;
+  document.querySelectorAll('#dhikrSelect button').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  currentDhikr = e.target.dataset.dhikr;
+  renderCounter();
+});
+document.getElementById('counterCircle').addEventListener('click', ()=>{
+  counts[currentDhikr] = (counts[currentDhikr]||0) + 1;
+  renderCounter();
+  saveCounts();
+  if(navigator.vibrate) navigator.vibrate(15);
+});
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  counts[currentDhikr] = 0;
+  renderCounter();
+  saveCounts();
+});
+document.getElementById('undoBtn').addEventListener('click', ()=>{
+  counts[currentDhikr] = Math.max(0, (counts[currentDhikr]||0) - 1);
+  renderCounter();
+  saveCounts();
+});
+loadCounts();
+
+// ---------- پرسش و پاسخ هوشمند ----------
+async function askClaude(systemPrompt, userQuestion){
+  const response = await fetch("/.netlify/functions/ask", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userQuestion }]
+    })
+  });
+  const data = await response.json();
+  const text = (data.content || []).map(b => b.text || "").join("\n").trim();
+  return text || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
+}
+
+const FIQH_SYSTEM = `شما یک دستیار آموزشی فقه اسلامی هستید که فقط و فقط بر اساس مذهب فقهی امام شافعی (مذهب شافعی) و با تکیه بر چارچوب کتاب «الفقه المنهجی علی مذهب الإمام الشافعی» (تألیف دکتر مصطفی خِن، مصطفی البُغا، علی شربجی) پاسخ می‌دهید.
+قواعد:
+۱. پاسخ را به زبان فارسی، روان و محترمانه بنویس.
+۲. حکم فقهی را دقیقاً بر اساس مذهب شافعی بیان کن و در صورت وجود اختلاف نظر در داخل خود مذهب شافعی (مثلاً قول جدید و قول قدیم امام شافعی)، به آن اشاره کن.
+۳. اگر سؤال خارج از حیطه فقه عملی است یا اطلاعات کافی نداری، صادقانه بگو و کاربر را به مشورت با عالم دین یا مفتی ارجاع بده.
+۴. از قطعیت بیش از حد در مسائل اختلافی پرهیز کن و لحن آموزشی و امانت‌دارانه داشته باش.
+۵. پاسخ را مختصر و ساختاریافته (حداکثر چند پاراگراف) ارائه بده، نه طولانی و enciclopedic.`;
+
+const SHUBUHAT_SYSTEM = `شما یک دستیار علمی هستید که به شبهات مطرح‌شده درباره اسلام پاسخ می‌دهید. رویکرد شما باید مشابه روش «موسوعة بیان الإسلام للرد علی الافتراءات والشبهات» باشد: ابتدا شبهه را منصفانه و دقیق بازگو کن، سپس با استدلال علمی، منطقی و مستند (قرآن، سنت صحیح، عقل، یا شواهد تاریخی) به آن پاسخ بده.
+قواعد:
+۱. پاسخ را به زبان فارسی، با لحنی آرام، علمی و غیرتهاجمی بنویس.
+۲. از اتهام‌زنی یا لحن تند نسبت به مخالفان پرهیز کن؛ هدف روشنگری است نه جدل.
+۳. در صورت وجود دیدگاه‌های مختلف میان علما درباره پاسخ شبهه، به‌طور منصفانه اشاره کن.
+۴. منابع مفهومی پاسخ را در صورت امکان نام ببر (مثلاً آیه، حدیث، یا اجماع علما) بدون نقل مستقیم طولانی.
+۵. پاسخ را ساختاریافته و نه بیش از حد طولانی ارائه بده.`;
+
+async function handleAsk(inputId, btnId, loadingId, answerId, systemPrompt){
+  const input = document.getElementById(inputId);
+  const question = input.value.trim();
+  if(!question) return;
+  const loading = document.getElementById(loadingId);
+  const answerBox = document.getElementById(answerId);
+  const btn = document.getElementById(btnId);
+  loading.classList.add('show');
+  answerBox.classList.remove('show');
+  btn.disabled = true;
+  try{
+    const answer = await askClaude(systemPrompt, question);
+    answerBox.textContent = answer;
+    answerBox.classList.add('show');
+  }catch(err){
+    answerBox.textContent = 'خطایی رخ داد. لطفاً اتصال اینترنت را بررسی کرده و دوباره تلاش کنید.';
+    answerBox.classList.add('show');
+  }finally{
+    loading.classList.remove('show');
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('fiqhAsk').addEventListener('click', ()=>{
+  handleAsk('fiqhInput','fiqhAsk','fiqhLoading','fiqhAnswer', FIQH_SYSTEM);
+});
+document.getElementById('shubuhatAsk').addEventListener('click', ()=>{
+  handleAsk('shubuhatInput','shubuhatAsk','shubuhatLoading','shubuhatAnswer', SHUBUHAT_SYSTEM);
+});
+</script>
+</body>
+</html>
