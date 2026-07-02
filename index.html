@@ -402,21 +402,22 @@ document.getElementById('undoBtn').addEventListener('click', ()=>{
 });
 loadCounts();
 
-// ---------- پرسش و پاسخ هوشمند ----------
+// ---------- پرسش و پاسخ هوشمند (اصلاح‌شده برای هماهنگی با ask.js) ----------
 async function askClaude(systemPrompt, userQuestion){
   const response = await fetch("/.netlify/functions/ask", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: "claude-sonnet-4-6",
-      max_tokens: 1000,
       system: systemPrompt,
-      messages: [{ role: "user", content: userQuestion }]
+      message: userQuestion
     })
   });
   const data = await response.json();
-  const text = (data.content || []).map(b => b.text || "").join("\n").trim();
-  return text || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
+  if (!response.ok) {
+    console.error("خطای تابع ask:", data);
+    return data.error || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
+  }
+  return data.answer || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
 }
 
 const FIQH_SYSTEM = `شما یک دستیار آموزشی فقه اسلامی هستید که فقط و فقط بر اساس مذهب فقهی امام شافعی (مذهب شافعی) و با تکیه بر چارچوب کتاب «الفقه المنهجی علی مذهب الإمام الشافعی» (تألیف دکتر مصطفی خِن، مصطفی البُغا، علی شربجی) پاسخ می‌دهید.
