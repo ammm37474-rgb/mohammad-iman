@@ -4,280 +4,147 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>محمد ایمان | قبله‌نما، تسبیح و پاسخ‌های فقهی</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --teal-950:#07211f;
-    --teal-900:#0c2e2b;
-    --teal-800:#123f3a;
-    --teal-700:#1a554d;
-    --gold-500:#c8992f;
-    --gold-300:#e3c270;
-    --parchment:#f3ead4;
-    --parchment-dim:#e6dabe;
-    --maroon:#7a2331;
-    --ink:#1c1410;
-    --radius:18px;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:
-      radial-gradient(circle at 15% 0%, rgba(200,153,47,0.12), transparent 45%),
-      radial-gradient(circle at 100% 100%, rgba(122,35,49,0.18), transparent 50%),
-      var(--teal-950);
-    color:var(--parchment);
-    font-family:'Vazirmatn', sans-serif;
-    min-height:100vh;
-    padding-bottom:40px;
-  }
-  .star-pattern{
-    position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;
-    background-image:
-      repeating-linear-gradient(45deg, var(--gold-500) 0 1px, transparent 1px 60px),
-      repeating-linear-gradient(-45deg, var(--gold-500) 0 1px, transparent 1px 60px);
-  }
-  header{
-    position:relative;z-index:1;
-    text-align:center;
-    padding:34px 16px 18px;
-  }
-  header .eyebrow{
-    font-size:13px;letter-spacing:.4em;color:var(--gold-300);
-    text-transform:uppercase;margin-bottom:6px;
-  }
-  header h1{
-    font-family:'Lalezar', sans-serif;
-    font-weight:400;
-    font-size:42px;
-    margin:0;
-    color:var(--parchment);
-    text-shadow:0 0 24px rgba(200,153,47,0.35);
-  }
-  header p{color:var(--parchment-dim);font-size:14px;margin-top:8px;}
-
-  nav{
-    position:relative;z-index:1;
-    display:flex;justify-content:center;gap:8px;
-    flex-wrap:wrap;
-    padding:0 14px 20px;
-    max-width:680px;margin:0 auto;
-  }
-  nav button{
-    font-family:'Vazirmatn', sans-serif;
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(227,194,112,0.25);
-    color:var(--parchment-dim);
-    padding:10px 18px;border-radius:999px;
-    font-size:14px;cursor:pointer;
-    transition:.2s;
-  }
-  nav button.active{
-    background:linear-gradient(135deg, var(--gold-500), #a87a1f);
-    color:var(--ink);border-color:transparent;font-weight:700;
-  }
-  nav button:hover:not(.active){border-color:var(--gold-300);}
-
-  main{
-    position:relative;z-index:1;
-    max-width:680px;margin:0 auto;padding:0 16px;
-  }
-  .panel{
-    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-    border:1px solid rgba(227,194,112,0.18);
-    border-radius:var(--radius);
-    padding:26px;
-    display:none;
-  }
-  .panel.active{display:block;animation:fadeIn .35s ease;}
-  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-
-  h2{font-family:'Lalezar', sans-serif;font-weight:400;font-size:24px;color:var(--gold-300);margin:0 0 16px;}
-
-  /* قبله نما */
-  .compass-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
-  .compass{
-    width:260px;height:260px;border-radius:50%;
-    background:radial-gradient(circle at 50% 40%, var(--teal-700), var(--teal-900));
-    border:3px solid var(--gold-500);
-    position:relative;
-    box-shadow:0 0 40px rgba(200,153,47,0.15) inset, 0 10px 30px rgba(0,0,0,0.4);
-  }
-  .compass .ring{
-    position:absolute;inset:14px;border-radius:50%;
-    border:1px dashed rgba(227,194,112,0.3);
-  }
-  .needle{
-    position:absolute;left:50%;top:50%;
-    width:4px;height:108px;
-    background:linear-gradient(to top, var(--maroon), var(--gold-300));
-    transform-origin:bottom center;
-    transform:translate(-50%,-100%) rotate(0deg);
-    border-radius:4px;
-    transition:transform .25s ease-out;
-  }
-  .needle::after{
-    content:'🕋';position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:20px;
-  }
-  .compass-center{
-    position:absolute;left:50%;top:50%;width:14px;height:14px;
-    background:var(--gold-300);border-radius:50%;transform:translate(-50%,-50%);
-  }
-  .compass-label{position:absolute;font-size:12px;color:var(--gold-300);font-weight:700;}
-  .lbl-n{top:8px;left:50%;transform:translateX(-50%);}
-  .lbl-s{bottom:8px;left:50%;transform:translateX(-50%);}
-  .lbl-e{right:8px;top:50%;transform:translateY(-50%);}
-  .lbl-w{left:8px;top:50%;transform:translateY(-50%);}
-  .qibla-info{text-align:center;color:var(--parchment-dim);font-size:14px;line-height:2;}
-  .qibla-info b{color:var(--gold-300);font-size:18px;}
-  .btn{
-    background:linear-gradient(135deg, var(--gold-500), #a87a1f);
-    color:var(--ink);border:none;padding:12px 26px;border-radius:999px;
-    font-family:'Vazirmatn',sans-serif;font-weight:700;font-size:15px;cursor:pointer;
-  }
-  .btn:disabled{opacity:.5;cursor:not-allowed;}
-  .note{font-size:12.5px;color:var(--parchment-dim);opacity:.75;text-align:center;margin-top:10px;line-height:1.9;}
-
-  /* تسبیح */
-  .tasbeeh-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;}
-  .dhikr-select{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
-  .dhikr-select button{
-    background:rgba(255,255,255,0.05);border:1px solid rgba(227,194,112,0.25);
-    color:var(--parchment-dim);padding:8px 16px;border-radius:12px;font-family:'Vazirmatn',sans-serif;
-    font-size:14px;cursor:pointer;
-  }
-  .dhikr-select button.active{background:var(--teal-700);color:var(--gold-300);border-color:var(--gold-300);}
-  .counter-circle{
-    width:220px;height:220px;border-radius:50%;
-    background:radial-gradient(circle at 50% 35%, var(--teal-700), var(--teal-900));
-    border:3px solid var(--gold-500);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    cursor:pointer;user-select:none;
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
-    transition:transform .08s;
-  }
-  .counter-circle:active{transform:scale(0.96);}
-  .counter-circle .num{font-size:54px;font-weight:800;color:var(--gold-300);font-family:'Lalezar',sans-serif;}
-  .counter-circle .dhikr-text{font-size:16px;color:var(--parchment-dim);margin-top:4px;}
-  .tasbeeh-actions{display:flex;gap:10px;}
-  .btn-ghost{
-    background:transparent;border:1px solid rgba(227,194,112,0.4);color:var(--parchment-dim);
-    padding:10px 20px;border-radius:999px;font-family:'Vazirmatn',sans-serif;cursor:pointer;
-  }
-
-  /* پرسش و پاسخ */
-  .qa-source{font-size:13px;color:var(--gold-300);background:rgba(200,153,47,0.08);
-    border:1px solid rgba(200,153,47,0.25);padding:10px 14px;border-radius:10px;margin-bottom:16px;line-height:1.9;}
-  textarea{
-    width:100%;min-height:90px;background:rgba(255,255,255,0.04);
-    border:1px solid rgba(227,194,112,0.25);border-radius:12px;color:var(--parchment);
-    font-family:'Vazirmatn',sans-serif;font-size:15px;padding:14px;resize:vertical;
-  }
-  textarea:focus{outline:none;border-color:var(--gold-300);}
-  .qa-actions{display:flex;justify-content:flex-end;margin-top:10px;}
-  .answer-box{
-    margin-top:18px;background:rgba(255,255,255,0.03);border-radius:14px;
-    border:1px solid rgba(227,194,112,0.15);padding:18px;line-height:2.1;font-size:15px;
-    display:none;white-space:pre-wrap;
-  }
-  .answer-box.show{display:block;animation:fadeIn .3s ease;}
-  .loading{display:flex;align-items:center;gap:10px;color:var(--gold-300);font-size:14px;margin-top:14px;display:none;}
-  .loading.show{display:flex;}
-  .spinner{width:16px;height:16px;border:2px solid rgba(227,194,112,0.3);border-top-color:var(--gold-300);
-    border-radius:50%;animation:spin .8s linear infinite;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .disclaimer{font-size:12px;color:var(--parchment-dim);opacity:.65;margin-top:14px;line-height:1.9;text-align:center;}
+:root{--teal-950:#07211f;--teal-900:#0c2e2b;--teal-800:#123f3a;--teal-700:#1a554d;--gold-500:#c8992f;--gold-300:#e3c270;--parchment:#f3ead4;--parchment-dim:#e6dabe;--maroon:#7a2331;--ink:#1c1410;--radius:18px;}
+*{box-sizing:border-box;}html,body{margin:0;padding:0;}
+body{background:radial-gradient(circle at 15% 0%,rgba(200,153,47,0.12),transparent 45%),radial-gradient(circle at 100% 100%,rgba(122,35,49,0.18),transparent 50%),var(--teal-950);color:var(--parchment);font-family:'Vazirmatn',sans-serif;min-height:100vh;padding-bottom:40px;}
+.star-pattern{position:fixed;inset:0;pointer-events:none;opacity:0.05;z-index:0;background-image:repeating-linear-gradient(45deg,var(--gold-500) 0 1px,transparent 1px 60px),repeating-linear-gradient(-45deg,var(--gold-500) 0 1px,transparent 1px 60px);}
+header{position:relative;z-index:1;text-align:center;padding:34px 16px 18px;}
+header .eyebrow{font-size:13px;letter-spacing:.4em;color:var(--gold-300);text-transform:uppercase;margin-bottom:6px;}
+header h1{font-family:'Lalezar',sans-serif;font-weight:400;font-size:42px;margin:0;color:var(--parchment);text-shadow:0 0 24px rgba(200,153,47,0.35);}
+header p{color:var(--parchment-dim);font-size:14px;margin-top:8px;}
+nav{position:relative;z-index:1;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;padding:0 14px 20px;max-width:680px;margin:0 auto;}
+nav button{font-family:'Vazirmatn',sans-serif;background:rgba(255,255,255,0.04);border:1px solid rgba(227,194,112,0.25);color:var(--parchment-dim);padding:10px 18px;border-radius:999px;font-size:14px;cursor:pointer;transition:.2s;}
+nav button.active{background:linear-gradient(135deg,var(--gold-500),#a87a1f);color:var(--ink);border-color:transparent;font-weight:700;}
+nav button:hover:not(.active){border-color:var(--gold-300);}
+main{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:0 16px;}
+.panel{background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid rgba(227,194,112,0.18);border-radius:var(--radius);padding:26px;display:none;}
+.panel.active{display:block;animation:fadeIn .35s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+h2{font-family:'Lalezar',sans-serif;font-weight:400;font-size:24px;color:var(--gold-300);margin:0 0 16px;}
+.compass-wrap{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.compass{width:260px;height:260px;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--teal-700),var(--teal-900));border:3px solid var(--gold-500);position:relative;box-shadow:0 0 40px rgba(200,153,47,0.15) inset,0 10px 30px rgba(0,0,0,0.4);}
+.compass .ring{position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(227,194,112,0.3);}
+.needle{position:absolute;left:50%;top:50%;width:4px;height:108px;background:linear-gradient(to top,var(--maroon),var(--gold-300));transform-origin:bottom center;transform:translate(-50%,-100%) rotate(0deg);border-radius:4px;transition:transform .25s ease-out;}
+.needle::after{content:'🕋';position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:20px;}
+.compass-center{position:absolute;left:50%;top:50%;width:14px;height:14px;background:var(--gold-300);border-radius:50%;transform:translate(-50%,-50%);}
+.compass-label{position:absolute;font-size:12px;color:var(--gold-300);font-weight:700;}
+.lbl-n{top:8px;left:50%;transform:translateX(-50%);}
+.lbl-s{bottom:8px;left:50%;transform:translateX(-50%);}
+.lbl-e{right:8px;top:50%;transform:translateY(-50%);}
+.lbl-w{left:8px;top:50%;transform:translateY(-50%);}
+.qibla-info{text-align:center;color:var(--parchment-dim);font-size:14px;line-height:2;}
+.qibla-info b{color:var(--gold-300);font-size:18px;}
+.btn{background:linear-gradient(135deg,var(--gold-500),#a87a1f);color:var(--ink);border:none;padding:12px 26px;border-radius:999px;font-family:'Vazirmatn',sans-serif;font-weight:700;font-size:15px;cursor:pointer;}
+.note{font-size:12.5px;color:var(--parchment-dim);opacity:.75;text-align:center;margin-top:10px;line-height:1.9;}
+.tasbeeh-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;}
+.dhikr-select{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+.dhikr-select button{background:rgba(255,255,255,0.05);border:1px solid rgba(227,194,112,0.25);color:var(--parchment-dim);padding:8px 16px;border-radius:12px;font-family:'Vazirmatn',sans-serif;font-size:14px;cursor:pointer;}
+.dhikr-select button.active{background:var(--teal-700);color:var(--gold-300);border-color:var(--gold-300);}
+.counter-circle{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 50% 35%,var(--teal-700),var(--teal-900));border:3px solid var(--gold-500);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;user-select:none;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:transform .08s;}
+.counter-circle:active{transform:scale(0.96);}
+.counter-circle .num{font-size:54px;font-weight:800;color:var(--gold-300);font-family:'Lalezar',sans-serif;}
+.counter-circle .dhikr-text{font-size:16px;color:var(--parchment-dim);margin-top:4px;}
+.tasbeeh-actions{display:flex;gap:10px;}
+.btn-ghost{background:transparent;border:1px solid rgba(227,194,112,0.4);color:var(--parchment-dim);padding:10px 20px;border-radius:999px;font-family:'Vazirmatn',sans-serif;cursor:pointer;}
+.qa-source{font-size:13px;color:var(--gold-300);background:rgba(200,153,47,0.08);border:1px solid rgba(200,153,47,0.25);padding:10px 14px;border-radius:10px;margin-bottom:16px;line-height:1.9;}
+.search-box{display:flex;gap:8px;margin-bottom:8px;}
+.search-box input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(227,194,112,0.25);border-radius:12px;color:var(--parchment);font-family:'Vazirmatn',sans-serif;font-size:15px;padding:12px 16px;}
+.search-box input:focus{outline:none;border-color:var(--gold-300);}
+.search-box input::placeholder{color:rgba(227,194,112,0.4);}
+.result-count{font-size:12px;color:var(--gold-300);margin-bottom:10px;opacity:.8;}
+.results{margin-top:4px;max-height:65vh;overflow-y:auto;}
+.result-item{background:rgba(255,255,255,0.03);border:1px solid rgba(227,194,112,0.12);border-radius:12px;padding:16px;margin-bottom:12px;line-height:2;font-size:14px;}
+.result-item .result-title{color:var(--gold-300);font-weight:700;font-size:15px;margin-bottom:8px;}
+.result-item .result-text{color:var(--parchment-dim);}
+.result-item mark{background:rgba(200,153,47,0.3);color:var(--gold-300);border-radius:3px;padding:0 2px;}
+.no-result{text-align:center;color:var(--parchment-dim);opacity:.6;padding:20px;font-size:14px;}
+.browse-hint{font-size:12px;color:var(--parchment-dim);opacity:.6;text-align:center;margin-top:6px;}
 </style>
 </head>
 <body>
 <div class="star-pattern"></div>
-
 <header>
   <div class="eyebrow">یار همراه عبادت</div>
   <h1>محمد ایمان</h1>
   <p>قبله‌نما · تسبیح دیجیتال · فقه شافعی · پاسخ به شبهات</p>
 </header>
-
 <nav>
   <button class="tab-btn active" data-tab="qibla">قبله‌نما</button>
   <button class="tab-btn" data-tab="tasbeeh">تسبیح</button>
   <button class="tab-btn" data-tab="fiqh">فقه شافعی</button>
   <button class="tab-btn" data-tab="shubuhat">رد شبهات</button>
 </nav>
-
 <main>
-
-  <!-- قبله نما -->
-  <section class="panel active" id="qibla">
-    <h2>قبله‌نما</h2>
-    <div class="compass-wrap">
-      <div class="compass" id="compassEl">
-        <div class="ring"></div>
-        <span class="compass-label lbl-n">شمال</span>
-        <span class="compass-label lbl-s">جنوب</span>
-        <span class="compass-label lbl-e">شرق</span>
-        <span class="compass-label lbl-w">غرب</span>
-        <div class="needle" id="needle"></div>
-        <div class="compass-center"></div>
-      </div>
-      <div class="qibla-info" id="qiblaInfo">برای فعال‌سازی قبله‌نما دکمه زیر را بزنید.</div>
-      <button class="btn" id="startCompass">فعال‌سازی قبله‌نما</button>
-      <div class="note">دستگاه را صاف نگه دارید و دور از فلز و آهن‌ربا باشید. عقربه طلایی جهت کعبه را نشان می‌دهد. این قابلیت نیاز به دسترسی به موقعیت مکانی و قطب‌نمای گوشی دارد.</div>
+<section class="panel active" id="qibla">
+  <h2>قبله‌نما</h2>
+  <div class="compass-wrap">
+    <div class="compass">
+      <div class="ring"></div>
+      <span class="compass-label lbl-n">شمال</span>
+      <span class="compass-label lbl-s">جنوب</span>
+      <span class="compass-label lbl-e">شرق</span>
+      <span class="compass-label lbl-w">غرب</span>
+      <div class="needle" id="needle"></div>
+      <div class="compass-center"></div>
     </div>
-  </section>
+    <div class="qibla-info" id="qiblaInfo">برای فعال‌سازی قبله‌نما دکمه زیر را بزنید.</div>
+    <button class="btn" id="startCompass">فعال‌سازی قبله‌نما</button>
+    <div class="note">دستگاه را صاف نگه دارید. عقربه طلایی جهت کعبه را نشان می‌دهد.</div>
+  </div>
+</section>
 
-  <!-- تسبیح -->
-  <section class="panel" id="tasbeeh">
-    <h2>تسبیح دیجیتال</h2>
-    <div class="tasbeeh-wrap">
-      <div class="dhikr-select" id="dhikrSelect">
-        <button class="active" data-dhikr="سبحان الله">سبحان الله</button>
-        <button data-dhikr="الحمد لله">الحمد لله</button>
-        <button data-dhikr="الله أكبر">الله أكبر</button>
-        <button data-dhikr="لا إله إلا الله">لا إله إلا الله</button>
-        <button data-dhikr="أستغفر الله">أستغفر الله</button>
-      </div>
-      <div class="counter-circle" id="counterCircle">
-        <div class="num" id="counterNum">۰</div>
-        <div class="dhikr-text" id="counterDhikr">سبحان الله</div>
-      </div>
-      <div class="tasbeeh-actions">
-        <button class="btn-ghost" id="resetBtn">بازنشانی</button>
-        <button class="btn-ghost" id="undoBtn">↺ یک واحد کم کن</button>
-      </div>
-      <div class="note">روی دایره بزنید تا شمارش شود. شمارش هر ذکر به‌صورت جداگانه ذخیره می‌شود.</div>
+<section class="panel" id="tasbeeh">
+  <h2>تسبیح دیجیتال</h2>
+  <div class="tasbeeh-wrap">
+    <div class="dhikr-select" id="dhikrSelect">
+      <button class="active" data-dhikr="سبحان الله">سبحان الله</button>
+      <button data-dhikr="الحمد لله">الحمد لله</button>
+      <button data-dhikr="الله أكبر">الله أكبر</button>
+      <button data-dhikr="لا إله إلا الله">لا إله إلا الله</button>
+      <button data-dhikr="أستغفر الله">أستغفر الله</button>
+      <button data-dhikr="حسبي الله">حسبي الله</button>
     </div>
-  </section>
+    <div class="counter-circle" id="counterCircle">
+      <div class="num" id="counterNum">۰</div>
+      <div class="dhikr-text" id="counterDhikr">سبحان الله</div>
+    </div>
+    <div class="tasbeeh-actions">
+      <button class="btn-ghost" id="resetBtn">بازنشانی</button>
+      <button class="btn-ghost" id="undoBtn">↺ یک کم کن</button>
+    </div>
+  </div>
+</section>
 
-  <!-- فقه شافعی -->
-  <section class="panel" id="fiqh">
-    <h2>پرسش فقهی بر مذهب امام شافعی</h2>
-    <div class="qa-source">منبع پاسخ‌ها: کتاب «الفقه المنهجی علی مذهب الإمام الشافعی» (دکتر مصطفی خِن، مصطفی البُغا، علی شربجی)</div>
-    <textarea id="fiqhInput" placeholder="مثلاً: حکم وضو با لاک ناخن چیست؟ یا شرایط صحت نماز جماعت کدام است؟"></textarea>
-    <div class="qa-actions"><button class="btn" id="fiqhAsk">پرسیدن سؤال</button></div>
-    <div class="loading" id="fiqhLoading"><div class="spinner"></div> در حال یافتن پاسخ بر اساس فقه شافعی...</div>
-    <div class="answer-box" id="fiqhAnswer"></div>
-    <div class="disclaimer">این پاسخ‌ها صرفاً جنبه آموزشی دارند و جایگزین مشورت با اهل علم و مفتی نیستند. برای مسائل مهم و سرنوشت‌ساز حتماً با عالم دین مشورت کنید.</div>
-  </section>
+<section class="panel" id="fiqh">
+  <h2>جستجو در فقه شافعی</h2>
+  <div class="qa-source">منبع: «الفقه المنهجی علی مذهب الإمام الشافعی» — مصطفی خِن، مصطفی البُغا، علی شربجی | ۱۵۰ موضوع</div>
+  <div class="search-box">
+    <input type="text" id="fiqhSearch" placeholder="مثلاً: وضو، نماز، زکات، طلاق...">
+    <button class="btn" onclick="searchFiqh()">جستجو</button>
+  </div>
+  <div class="browse-hint">برای مشاهده همه موضوعات، فضای خالی را جستجو کنید یا حرفی بنویسید.</div>
+  <div class="result-count" id="fiqhCount"></div>
+  <div class="results" id="fiqhResults"></div>
+</section>
 
-  <!-- رد شبهات -->
-  <section class="panel" id="shubuhat">
-    <h2>پاسخ به شبهات</h2>
-    <div class="qa-source">منبع پاسخ‌ها: رویکرد «موسوعة بیان الإسلام للرد علی الافتراءات والشبهات» — اثر جمعی از علمای امت</div>
-    <textarea id="shubuhatInput" placeholder="شبهه یا سؤال خود را بنویسید، مثلاً: شبهه‌ای درباره چندهمسری در اسلام شنیده‌ام..."></textarea>
-    <div class="qa-actions"><button class="btn" id="shubuhatAsk">پرسیدن سؤال</button></div>
-    <div class="loading" id="shubuhatLoading"><div class="spinner"></div> در حال تدوین پاسخ مستدل...</div>
-    <div class="answer-box" id="shubuhatAnswer"></div>
-    <div class="disclaimer">پاسخ‌ها با رویکرد علمی و مستند ارائه می‌شوند. برای مطالعه عمیق‌تر به منابع اصلی مراجعه کنید.</div>
-  </section>
-
+<section class="panel" id="shubuhat">
+  <h2>جستجو در رد شبهات</h2>
+  <div class="qa-source">منبع: «موسوعة بیان الإسلام للرد علی الافتراءات والشبهات» + منابع علمی معتبر | ۱۵۰ موضوع</div>
+  <div class="search-box">
+    <input type="text" id="shubuhatSearch" placeholder="مثلاً: جهاد، حجاب، علم، قرآن...">
+    <button class="btn" onclick="searchShubuhat()">جستجو</button>
+  </div>
+  <div class="browse-hint">برای مشاهده همه موضوعات، فضای خالی را جستجو کنید.</div>
+  <div class="result-count" id="shubuhatCount"></div>
+  <div class="results" id="shubuhatResults"></div>
+</section>
 </main>
 
 <script>
-// ---------- ناوبری تب‌ها ----------
 document.querySelectorAll('.tab-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
+  btn.addEventListener('click',()=>{
     document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
@@ -285,186 +152,273 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
   });
 });
 
-// ---------- قبله نما ----------
-const KAABA = {lat:21.4225, lng:39.8262};
-let qiblaBearing = null;
-let currentHeading = 0;
-
-function toRad(d){return d*Math.PI/180;}
-function toDeg(r){return r*180/Math.PI;}
-
-function calcQiblaBearing(lat, lng){
-  const phi1 = toRad(lat), phi2 = toRad(KAABA.lat);
-  const dLambda = toRad(KAABA.lng - lng);
-  const y = Math.sin(dLambda)*Math.cos(phi2);
-  const x = Math.cos(phi1)*Math.sin(phi2) - Math.sin(phi1)*Math.cos(phi2)*Math.cos(dLambda);
-  let brng = toDeg(Math.atan2(y,x));
-  return (brng + 360) % 360;
-}
-
-function updateNeedle(){
-  if(qiblaBearing===null) return;
-  const rotation = qiblaBearing - currentHeading;
-  document.getElementById('needle').style.transform = `translate(-50%,-100%) rotate(${rotation}deg)`;
-}
-
-function handleOrientation(e){
-  let heading;
-  if (e.webkitCompassHeading !== undefined){
-    heading = e.webkitCompassHeading; // iOS
-  } else if (e.alpha !== null){
-    heading = 360 - e.alpha; // Android approx
-  } else { return; }
-  currentHeading = heading;
-  updateNeedle();
-}
-
-document.getElementById('startCompass').addEventListener('click', async ()=>{
-  const info = document.getElementById('qiblaInfo');
-  info.textContent = 'در حال دریافت موقعیت مکانی...';
-  if(!navigator.geolocation){
-    info.textContent = 'مرورگر شما از موقعیت‌یابی پشتیبانی نمی‌کند.';
-    return;
-  }
-  navigator.geolocation.getCurrentPosition(async (pos)=>{
-    const {latitude, longitude} = pos.coords;
-    qiblaBearing = calcQiblaBearing(latitude, longitude);
-    info.innerHTML = `جهت قبله: <b>${qiblaBearing.toFixed(1)}°</b> از شمال جغرافیایی`;
-
-    // درخواست دسترسی به قطب‌نمای دستگاه (iOS 13+)
-    if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
-      try{
-        const res = await DeviceOrientationEvent.requestPermission();
-        if(res === 'granted'){
-          window.addEventListener('deviceorientation', handleOrientation, true);
-        } else {
-          info.innerHTML += '<br>دسترسی به قطب‌نما رد شد؛ فقط زاویه قبله نمایش داده می‌شود.';
-        }
-      }catch(err){
-        info.innerHTML += '<br>قطب‌نمای دستگاه در دسترس نیست.';
-      }
-    } else if ('ondeviceorientationabsolute' in window){
-      window.addEventListener('deviceorientationabsolute', handleOrientation, true);
-    } else if ('ondeviceorientation' in window){
-      window.addEventListener('deviceorientation', handleOrientation, true);
-    } else {
-      info.innerHTML += '<br>این دستگاه قطب‌نما ندارد؛ فقط زاویه قبله نمایش داده می‌شود.';
-    }
-    updateNeedle();
-  }, (err)=>{
-    info.textContent = 'دسترسی به موقعیت مکانی رد شد یا در دسترس نیست.';
-  });
+const KAABA={lat:21.4225,lng:39.8262};
+let qiblaBearing=null,currentHeading=0;
+function toRad(d){return d*Math.PI/180;}function toDeg(r){return r*180/Math.PI;}
+function calcQiblaBearing(lat,lng){const phi1=toRad(lat),phi2=toRad(KAABA.lat),dL=toRad(KAABA.lng-lng);const y=Math.sin(dL)*Math.cos(phi2);const x=Math.cos(phi1)*Math.sin(phi2)-Math.sin(phi1)*Math.cos(phi2)*Math.cos(dL);return(toDeg(Math.atan2(y,x))+360)%360;}
+function handleOrientation(e){let h=e.webkitCompassHeading!==undefined?e.webkitCompassHeading:e.alpha!==null?360-e.alpha:null;if(h===null)return;currentHeading=h;if(qiblaBearing!==null)document.getElementById('needle').style.transform=`translate(-50%,-100%) rotate(${qiblaBearing-currentHeading}deg)`;}
+document.getElementById('startCompass').addEventListener('click',async()=>{
+  const info=document.getElementById('qiblaInfo');info.textContent='در حال دریافت موقعیت...';
+  if(!navigator.geolocation){info.textContent='مرورگر شما از موقعیت‌یابی پشتیبانی نمی‌کند.';return;}
+  navigator.geolocation.getCurrentPosition(async pos=>{
+    qiblaBearing=calcQiblaBearing(pos.coords.latitude,pos.coords.longitude);
+    info.innerHTML=`جهت قبله: <b>${qiblaBearing.toFixed(1)}°</b> از شمال`;
+    if(typeof DeviceOrientationEvent!=='undefined'&&typeof DeviceOrientationEvent.requestPermission==='function'){try{const r=await DeviceOrientationEvent.requestPermission();if(r==='granted')window.addEventListener('deviceorientation',handleOrientation,true);}catch(e){}}
+    else if('ondeviceorientationabsolute' in window){window.addEventListener('deviceorientationabsolute',handleOrientation,true);}
+    else{window.addEventListener('deviceorientation',handleOrientation,true);}
+    document.getElementById('needle').style.transform=`translate(-50%,-100%) rotate(${qiblaBearing}deg)`;
+  },()=>{info.textContent='دسترسی به موقعیت رد شد.';});
 });
 
-// ---------- تسبیح ----------
-let currentDhikr = 'سبحان الله';
-let counts = {};
-
-const toFaDigits = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
-
-async function loadCounts(){
-  try{
-    const result = await window.storage.get('tasbeeh-counts');
-    counts = result ? JSON.parse(result.value) : {};
-  }catch(e){ counts = {}; }
-  renderCounter();
-}
-async function saveCounts(){
-  try{ await window.storage.set('tasbeeh-counts', JSON.stringify(counts)); }catch(e){}
-}
-function renderCounter(){
-  const c = counts[currentDhikr] || 0;
-  document.getElementById('counterNum').textContent = toFaDigits(c);
-  document.getElementById('counterDhikr').textContent = currentDhikr;
-}
-document.getElementById('dhikrSelect').addEventListener('click', (e)=>{
-  if(e.target.tagName !== 'BUTTON') return;
-  document.querySelectorAll('#dhikrSelect button').forEach(b=>b.classList.remove('active'));
-  e.target.classList.add('active');
-  currentDhikr = e.target.dataset.dhikr;
-  renderCounter();
-});
-document.getElementById('counterCircle').addEventListener('click', ()=>{
-  counts[currentDhikr] = (counts[currentDhikr]||0) + 1;
-  renderCounter();
-  saveCounts();
-  if(navigator.vibrate) navigator.vibrate(15);
-});
-document.getElementById('resetBtn').addEventListener('click', ()=>{
-  counts[currentDhikr] = 0;
-  renderCounter();
-  saveCounts();
-});
-document.getElementById('undoBtn').addEventListener('click', ()=>{
-  counts[currentDhikr] = Math.max(0, (counts[currentDhikr]||0) - 1);
-  renderCounter();
-  saveCounts();
-});
+let currentDhikr='سبحان الله',counts={};
+const toFa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+function loadCounts(){try{const s=localStorage.getItem('tasbeeh');counts=s?JSON.parse(s):{};}catch(e){counts={};}renderCounter();}
+function saveCounts(){try{localStorage.setItem('tasbeeh',JSON.stringify(counts));}catch(e){}}
+function renderCounter(){document.getElementById('counterNum').textContent=toFa(counts[currentDhikr]||0);document.getElementById('counterDhikr').textContent=currentDhikr;}
+document.getElementById('dhikrSelect').addEventListener('click',e=>{if(e.target.tagName!=='BUTTON')return;document.querySelectorAll('#dhikrSelect button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');currentDhikr=e.target.dataset.dhikr;renderCounter();});
+document.getElementById('counterCircle').addEventListener('click',()=>{counts[currentDhikr]=(counts[currentDhikr]||0)+1;renderCounter();saveCounts();if(navigator.vibrate)navigator.vibrate(15);});
+document.getElementById('resetBtn').addEventListener('click',()=>{counts[currentDhikr]=0;renderCounter();saveCounts();});
+document.getElementById('undoBtn').addEventListener('click',()=>{counts[currentDhikr]=Math.max(0,(counts[currentDhikr]||0)-1);renderCounter();saveCounts();});
 loadCounts();
 
-// ---------- پرسش و پاسخ هوشمند (اصلاح‌شده برای هماهنگی با ask.js) ----------
-async function askClaude(systemPrompt, userQuestion){
-  const response = await fetch("/.netlify/functions/ask", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      system: systemPrompt,
-      message: userQuestion
-    })
-  });
-  const data = await response.json();
-  if (!response.ok) {
-    console.error("خطای تابع ask:", data);
-    return data.error || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
-  }
-  return data.answer || "متأسفانه در حال حاضر امکان دریافت پاسخ وجود ندارد. لطفاً دوباره تلاش کنید.";
+const FIQH_DATA=[
+{t:"طهارت - انواع آب",x:"آب‌ها چهار قسمند: مطلق (پاک و پاک‌کننده)، مضاف (مثل آب میوه، فقط پاک)، مستعمل (استفاده‌شده در طهارت واجب)، نجس. طهارت فقط با آب مطلق صحیح است."},
+{t:"طهارت - وضو شرایط",x:"شرایط وجوب وضو: اسلام، بلوغ، عقل، نبود عذر. شرایط صحت وضو: نیت، اسلام، ممیز بودن، نبود مانع روی اعضا مثل لاک ناخن."},
+{t:"طهارت - فرائض وضو",x:"فرائض وضو شش چیز است: نیت، شستن صورت، شستن دو دست تا آرنج، مسح بخشی از سر، شستن دو پا تا قوزک، ترتیب بین اعضا."},
+{t:"طهارت - سنن وضو",x:"سنن وضو: بسمله، شستن دستان پیش از شروع، مضمضه، استنشاق، مسح تمام سر، مسح دو گوش، خلال انگشتان، تثلیث (سه بار شستن)، موالات."},
+{t:"طهارت - نواقض وضو",x:"نواقض وضو: خروج چیزی از دو راه (بول، غائط، باد، مذی، ودی)، خواب عمیق، زوال عقل، لمس آلت تناسلی با کف دست، لمس نامحرم بدون حائل در مذهب شافعی."},
+{t:"طهارت - تیمم",x:"تیمم جایگزین وضو و غسل می‌شود هنگام نبود آب یا ضرر آب. شرط: خاک پاک طاهر. فرائض تیمم: نیت، مسح صورت، مسح دو دست تا مچ."},
+{t:"طهارت - غسل واجب",x:"موجبات غسل: جنابت (جماع یا انزال)، حیض، نفاس، ولادت، موت مسلمان. غسل مستحب: جمعه، عیدین، احرام، پس از غسل میت."},
+{t:"طهارت - حیض",x:"حیض خون طبیعی زن است. حداقل آن یک روز یک شب، حداکثر پانزده روز، معمول آن شش یا هفت روز. در حیض نماز و روزه حرام و قضا نماز ساقط است اما روزه قضا دارد."},
+{t:"طهارت - نفاس",x:"نفاس خون پس از زایمان است. حداکثر آن شصت روز، اکثر آن چهل روز. احکام آن مانند حیض است. اگر خون پس از شصت روز ادامه داشت استحاضه است."},
+{t:"طهارت - نجاسات",x:"نجاسات: بول، غائط، خون، قیح، مذی، ودی، منی (طبق قول جدید شافعی طاهر است)، میته، خوک، سگ. طریقه تطهیر: شستن تا از بین رفتن اثر نجاست."},
+{t:"نماز - اوقات",x:"اوقات نماز: صبح (از فجر صادق تا طلوع)، ظهر (از زوال تا مثل)، عصر (از مثل تا غروب)، مغرب (از غروب تا ذهاب شفق)، عشاء (از ذهاب شفق تا نصف لیل)."},
+{t:"نماز - شرایط",x:"شرایط صحت نماز: طهارت حدث و خبث، ستر عورت، استقبال قبله، دخول وقت، نیت. عورت مرد از ناف تا زانو، عورت زن تمام بدن جز وجه و کفین در نماز."},
+{t:"نماز - ارکان",x:"ارکان نماز هفده‌گانه: نیت، قیام با قادر، تکبیرة‌الاحرام، فاتحه، رکوع، طمأنینه در رکوع، رفع از رکوع، اعتدال، سجدتان، طمأنینه در سجود، جلوس بین سجدتین، تشهد اخیر، صلوات، سلام، ترتیب."},
+{t:"نماز - سنن",x:"سنن نماز: دعای استفتاح، تعوذ، بسمله، آمین، قرائت سوره بعد فاتحه، جهر و اخفات در موضعشان، تکبیرات انتقال، تسبیح رکوع و سجود، دعای اعتدال، دعا بین سجدتین، تشهد اول، قنوت در صبح."},
+{t:"نماز - مبطلات",x:"مبطلات نماز: حدث، نجاست، کشف عورت، انحراف از قبله عمداً، کلام عمدی، أکل و شرب، حرکت کثیر متوالی، خنده، ارتداد، نیت قطع نماز."},
+{t:"نماز - جماعت",x:"نماز جماعت سنت مؤکده است. فضیلت آن بیست‌وهفت برابر. شروط اقتداء: نیت اقتدا، موافقت در فریضه، عدم تقدم مأموم، علم به انتقالات امام."},
+{t:"نماز - جمعه",x:"نماز جمعه فریضه عین است بر هر مسلمان مکلف مقیم مرد. شرط صحت جمعه: اربعین (چهل نفر)، مقیم، دو خطبه، جماعت. وقت جمعه مانند ظهر است."},
+{t:"نماز - قصر و جمع",x:"مسافر می‌تواند نمازهای چهاررکعتی را قصر کند (دو رکعت). جمع بین ظهر و عصر و مغرب و عشاء در سفر جایز است. حد سفر موجب قصر ۸۸ کیلومتر است."},
+{t:"نماز - نماز عیدین",x:"نماز عیدین (عید فطر و عید قربان) سنت مؤکده است. دو رکعت است با هفت تکبیر در رکعت اول و پنج تکبیر در رکعت دوم. وقت آن از طلوع خورشید تا زوال است."},
+{t:"نماز - نماز کسوف",x:"نماز کسوف (خسوف ماه و کسوف خورشید) سنت است. دو رکعت با دو رکوع در هر رکعت. پس از نماز خطبه خوانده می‌شود. به جماعت افضل است."},
+{t:"نماز - نماز استسقاء",x:"نماز استسقاء (طلب باران) سنت است. دو رکعت مانند عیدین. امام خطبه می‌خواند و به سمت قبله رو می‌کند و عبا را وارونه می‌پوشد. دعای مخصوص دارد."},
+{t:"زکات - شرایط وجوب",x:"شرایط وجوب زکات: اسلام، حریت (آزادگی)، ملکیت نصاب، حول (گذشتن یک سال قمری بر نصاب). زکات بر کودک و مجنون هم واجب است و ولی آن را ادا می‌کند."},
+{t:"زکات - نصاب طلا و نقره",x:"نصاب طلا ۲۰ مثقال شرعی (حدود ۸۵ گرم) و زکات آن ربع عشر (۲.۵٪). نصاب نقره ۲۰۰ درهم (حدود ۵۹۵ گرم) و زکات آن هم ۲.۵٪. شرط: گذشتن حول."},
+{t:"زکات - زکات تجارت",x:"عروض تجارت (کالاهای تجاری) زکات دارند. نصابش ارزش بیست مثقال طلا. در پایان حول قیمت کالا را محاسبه کرده ۲.۵٪ آن را زکات می‌دهند."},
+{t:"زکات - زکات زراعت",x:"زکات زراعت (حبوبات و میوه‌ها) نصفش عشر است اگر با آب باران آبیاری شود، و نصف عشر اگر با آبیاری مصنوعی. نصاب آن پنج وسق (حدود ۶۵۳ کیلوگرم)."},
+{t:"زکات - زکات انعام",x:"زکات شتر، گاو و گوسفند واجب است. نصاب شتر ۵ رأس، گاو ۳۰ رأس، گوسفند ۴۰ رأس. شرط: سائمه بودن (چرا در مرتع) و گذشتن حول."},
+{t:"زکات - مصارف زکات",x:"مصارف هشتگانه زکات: فقراء، مساکین، عاملین علیها، مؤلفة القلوب، فی الرقاب، الغارمون، فی سبیل الله، ابن السبیل. هر صنف سهمی دارد و نباید به غیر آن‌ها داده شود."},
+{t:"زکات - زکات فطر",x:"زکات فطر واجب است بر هر مسلمان که در آخر رمضان نفقه خود و عیالش را داشته باشد. مقدار آن یک صاع (حدود ۲.۵ کیلو) از قوت غالب منطقه. وقت وجوبش غروب آخر رمضان است."},
+{t:"روزه - شرایط وجوب",x:"شرایط وجوب روزه: اسلام، بلوغ، عقل، صحت، اقامت (نه مسافر). شرایط صحت روزه: نیت از شب، اجتناب مفطرات، طهارت از حیض و نفاس."},
+{t:"روزه - مفطرات",x:"مفطرات روزه: دخول چیزی به جوف عمداً (خوردن، آشامیدن)، جماع، استمناء، قی عمدی، حجامت (طبق قول مشهور)، دخول دود یا بخار عمداً، حیض و نفاس."},
+{t:"روزه - کفاره",x:"کفاره جماع در رمضان: عتق رقبه، یا روزه دو ماه متتابع، یا اطعام شصت مسکین. کفاره فقط برای جماع است نه سایر مفطرات. قضا بر همه مفطرات واجب است."},
+{t:"روزه - عذرهای افطار",x:"عذرهای مبیح افطار: مرض که روزه ضرر دارد، سفر، حیض و نفاس، حمل و ارضاع اگر ضرر باشد، اکراه. مریض و مسافر قضا دارند. حامل و مرضعه قضا و فدیه دارند."},
+{t:"روزه - روزه قضا",x:"قضای رمضان واجب فوری نیست اما پیش از رمضان بعدی باید ادا شود. اگر بدون عذر تا رمضان بعد تأخیر شود علاوه بر قضا فدیه هم واجب می‌شود (یک مد طعام برای هر روز)."},
+{t:"روزه - روزه مستحب",x:"روزه‌های مستحب: روزه شش روز شوال، دوشنبه و پنجشنبه، ایام بیض (سیزده چهارده پانزده هر ماه)، عاشورا و تاسوعا، نه ذوالحجه، روزه داوودی (یک روز در میان)."},
+{t:"حج - شرایط وجوب",x:"شرایط وجوب حج: اسلام، بلوغ، عقل، استطاعت مالی و بدنی، امنیت راه. حج در عمر یک بار واجب است. محرم برای زن در سفر طولانی لازم است طبق مذهب شافعی."},
+{t:"حج - ارکان",x:"ارکان حج پنج است: احرام، وقوف در عرفه (رکن اعظم)، طواف افاضه، سعی صفا و مروه، حلق یا تقصیر. ترک هر رکنی حج را باطل می‌کند."},
+{t:"حج - واجبات",x:"واجبات حج: احرام از میقات، وقوف در مزدلفه، مبیت در منی، رمی جمرات، حلق یا تقصیر در منی، طواف وداع. ترک واجب دم (ذبح) لازم می‌کند."},
+{t:"حج - محرمات احرام",x:"محرمات احرام: لبس مخیط برای مرد، تغطیه رأس برای مرد، تغطیه وجه برای زن، قطع شعر و ظفر، استعمال طیب، صید، عقد نکاح، جماع، مباشرت شهوانی."},
+{t:"حج - عمره",x:"عمره سنت مؤکده است. ارکان عمره: احرام، طواف، سعی، حلق یا تقصیر. یمکن الاعتمار فی کل وقت ما عدا یوم عرفه و ایام منی طبق بعضی علما. تکرار عمره جایز است."},
+{t:"نکاح - ارکان",x:"ارکان نکاح: زوج، زوجه، ولی، شاهدان عادل، صیغه (ایجاب و قبول). بدون ولی عقد نکاح در مذهب شافعی باطل است. اشتراط دو شاهد رکن است."},
+{t:"نکاح - شروط ولی",x:"ولی نکاح باید: مسلمان، مرد، بالغ، عاقل، آزاد، عدالت (طبق قول مشهور) باشد. ترتیب ولایت: پدر، جد، برادر، عم، ابن عم. اگر ولی غایب یا عاضل باشد قاضی ولی می‌شود."},
+{t:"نکاح - محرمات",x:"محرمات نکاح: محارم نسبی (مادر، دختر، خواهر، عمه، خاله، بنت اخ، بنت اخت)، محارم رضاعی مثل نسبی، مصاهرت (مادر زن، بنت الزوجة المدخول بها)، لعان، اجتماع اختین."},
+{t:"نکاح - مهر",x:"مهر واجب است در نکاح. مهر المثل (مهر همتا) معیار است. مهر می‌تواند مال یا منفعت باشد. مهر حق زن است و شوهر نمی‌تواند آن را ببخشد مگر با رضای زن. نصفش با طلاق قبل دخول ساقط می‌شود."},
+{t:"نکاح - حقوق زوجین",x:"حقوق زوجه: نفقه (خوراک، پوشاک، مسکن)، کسوه، مسکن مستقل، قَسم عادلانه بین زوجات. حقوق زوج: اطاعت در غیر معصیت، عدم خروج بدون اذن، تمکین جنسی."},
+{t:"طلاق - انواع",x:"طلاق رجعی: زوج می‌تواند در مدت عده رجوع کند. طلاق بائن بینونه صغری: با مال (خلع) یا قبل دخول. طلاق بائن بینونه کبری: سه طلاق - حرمت تا نکاح با زوج دیگر."},
+{t:"طلاق - عده",x:"عده مطلقه: سه قروء (حیض) برای غیرآیسه. اگر حامل است تا وضع حمل. آیسه: سه أشهر. غیرمدخول بها: لا عده. عده وفات: چهار ماه و ده روز، حامل تا وضع حمل."},
+{t:"طلاق - خلع",x:"خلع جدایی با عوض از طرف زن است. شرط: رضایت زوج. خلع طلاق بائن است. عوض معمولاً مهر است. اگر زوج ظالم باشد خلع گرفتن کراهت دارد. پس از خلع رجوع بدون نکاح جدید ممکن نیست."},
+{t:"طلاق - ایلاء و ظهار",x:"ایلاء: قسم زوج بر عدم وطی بیش از چهار ماه. اگر بازگشت نکرد قاضی طلاق می‌دهد. ظهار: تشبیه زوجه به ظهر محرم. موجب کفاره می‌شود: عتق، یا روزه دو ماه، یا اطعام."},
+{t:"ارث - فرائض",x:"اصحاب فروض مقدره: زوج (نصف یا ربع)، زوجه (ربع یا ثمن)، بنت (نصف یا ثلثان)، ام (ثلث یا سدس)، اب (سدس یا تعصیب)، جده (سدس)، اخت شقیقه، اخت لأب، اخ لأم."},
+{t:"ارث - عصبات",x:"عصبات بالنفس: ابن، ابن الابن، اب، جد، اخ شقیق، اخ لأب، ابن الاخ، عم، ابن العم. یأخذون الباقی بعد الفروض. اگر باقی نباشد در برخی حالات رد می‌شود."},
+{t:"ارث - حجب",x:"حجب حرمان: ابن یحجب ابن الابن، ابن یحجب الاخوه، اب یحجب الاخوه والجد. حجب نقصان: زوج ینقص من النصف الی الربع بوجود الفرع. ام تنقص من الثلث الی السدس بوجود جمع الاخوه."},
+{t:"وصیه - احکام",x:"وصیت برای وارث بدون اجازه سایر ورثه نافذ نیست. وصیت در ثلث مال جایز است. وصیت برای قاتل باطل است. وصیت برای حمل صحیح است اگر زنده متولد شود."},
+{t:"بیع - شرایط صحت",x:"شرایط صحت بیع: بایع و مشتری (عاقل، بالغ یا مأذون)، صیغه (ایجاب و قبول)، مبیع (موجود، معلوم، مقدور التسلیم، مملوک). بیع غرر (جهل) باطل است."},
+{t:"بیع - بیع‌های ممنوع",x:"بیع‌های ممنوع: بیع ملاقیح (نطفه در بطن)، بیع ملامسه، بیع منابذه، بیع حصاة، بیع عینه، بیع نجش، بیع المصراة. بیع ربوی در اصناف شش‌گانه (طلا، نقره، برنج، گندم، جو، خرما) ممنوع است."},
+{t:"ربا - احکام",x:"ربا دو نوع است: ربا الفضل (تفاضل هم‌جنس) و ربا النسیئه (تأخیر با زیاده). هر دو حرام است. ربا در اصناف ستة (ذهب، فضه، برّ، شعیر، تمر، ملح) جاری است. القاعدة: اتحاد جنس یوجب التماثل والتقابض."},
+{t:"اجاره - احکام",x:"اجاره عقد بر منفعت معلوم به عوض معلوم است. شرایط: منفعت معلوم، اجرت معلوم، مدت معلوم. تلف عین مستأجره بدون تعدی مستأجر ضمان ندارد. اجاره با مرگ موجر باطل نمی‌شود."},
+{t:"قرض - احکام",x:"قرض مستحب است. شرط: مال مثلی. قرض‌گیرنده ضامن مثل یا قیمت است. هر نفعی که قرض‌دهنده شرط کند ربا است. وعده بازپرداخت با هدیه اگر شرط باشد حرام است."},
+{t:"شرکت - انواع",x:"شرکت عقد: شرکت العنان (هر شریک با مال خود تصرف می‌کند)، شرکت الأبدان (شراکت در کار)، شرکت المضاربة (یکی مال، دیگری کار). شرکت وجوه در مذهب شافعی جایز نیست."},
+{t:"وکاله - احکام",x:"وکاله جایز است در هر تصرفی که وکیل می‌تواند خودش انجام دهد. وکیل امین است. تعدی موکل ضمان ایجاد می‌کند. وکاله به مرگ موکل یا وکیل یا عزل منفسخ می‌شود."},
+{t:"هبه - احکام",x:"هبه بخشیدن مال بدون عوض است. شرط: ایجاب و قبول و قبض. هبه به اولاد باید به تساوی باشد (استحباباً). رجوع در هبه بعد از قبض جایز نیست مگر والد از ولد."},
+{t:"عاریه - احکام",x:"عاریه اذن در انتفاع بدون عوض است. مستعیر ضامن است اگر تلف شود حتی بدون تعدی (طبق قول اظهر شافعی). استعمال در غیر مأذون موجب ضمان است."},
+{t:"غصب - احکام",x:"غصب: اخذ مال غیر ظلماً. غاصب ضامن است حتی با آفت سماوی. اگر مغصوب تلف شد مثل یا قیمت دارد. منافع مغصوبه هم ضمان دارد. یجب رد العین مع الامکان."},
+{t:"لقطه - احکام",x:"لقطه: مال پیداشده. واجب است تعریف آن یک سال. بعد از تعریف می‌تواند برای خود نگه دارد یا صدقه دهد. اگر صاحبش آمد ضامن است. لقیط (کودک رهاشده) پیداکننده کافل اوست."},
+{t:"جنایات - قصاص",x:"قصاص در نفس و اعضا جایز است. شرط قصاص: قتل عمد عدوان، تکلیف قاتل، عدم ابوت. عفو افضل است. دیه نفس مسلمان صد شتر یا معادل آن. قصاص حق ولی دم است."},
+{t:"حدود - سرقت",x:"حد سرقت: قطع ید راست. شرط: نصاب (ربع دینار)، حرز، عدم شبهه ملک. اگر سارق توبه کرد و مال را برگرداند قبل از رفع دعوا، حد ساقط می‌شود طبق بعضی اقوال."},
+{t:"حدود - زنا",x:"حد زنا برای محصن: رجم. برای غیرمحصن: صد جلد و تغریب یک سال. اثبات: چهار شاهد عادل یا اقرار. اگر شاهد به چهار نرسید قذف می‌شوند. توبه قبل از اقرار مانع اجرا است."},
+{t:"حدود - شرب خمر",x:"شرب خمر حرام و حد آن هشتاد جلد است. هر مسکری خمر است. خمر نجس است. معاوضه بر خمر باطل است. استعمال آن برای تداوی جایز نیست مگر اضطرار تام."},
+{t:"جهاد - احکام",x:"جهاد فرض کفایه است. فرض عین می‌شود با دخول عدو دیار اسلام. شرط: اذن ولی امر، اذن والدین برای غیرمستطیع. غنائم: خمس لله، باقی للغانمین."},
+{t:"اطعمه - حلال و حرام",x:"حلال: بهائم اهلی (گاو، گوسفند، شتر)، پرندگان بدون مخلب، ماهی، جراد. حرام: خوک، خمر، حمار اهلی، سباع ذات ناب، پرندگان ذات مخلب، حیوانات اهلی ذبح‌نشده."},
+{t:"ذباحه - شرایط",x:"شرایط ذباحه: ذابح (مسلمان یا اهل کتاب)، ذکاة (قطع حلقوم و مری و الودجین)، تسمیه. میته و ذبح بدون تسمیه عمداً حرام است. ذبح اهل کتاب حلال است."},
+{t:"صید - احکام",x:"صید حلال است. اگر با سلاح: لازم است اصابت محل قتل. اگر با کلب معلَّم: لازم است کلب را رها کند و تسمیه کند. اگر کلب از آن خورد مکروه است طبق قول مشهور."},
+{t:"قضاء - شرایط قاضی",x:"شرایط قاضی: اسلام، بلوغ، عقل، ذکوریت، حریت، عدالت، علم. القضاء فرض کفایة. القضاء بالعلم جایز است نزد جمهور. شهادة العدد المعتبر شرط."},
+{t:"شهادت - شرایط شاهد",x:"شرایط شاهد: اسلام، بلوغ، عقل، حریت، عدالت، عدم تهمت (قرابت یا عداوت). شهادت عبد و کافر در امور مسلمانان مقبول نیست. شهادت النساء در اموال مقبول است."},
+{t:"وقف - احکام",x:"وقف حبس اصل مال و تسبیل منفعت است. وقف صدقه جاریه است. شرط: واقف (مالک، مکلف)، موقوف (مال منتفع به)، موقوف علیه، صیغه. وقف لازم است و رجوع ندارد."},
+{t:"نذر - احکام",x:"نذر وعده با الله است بر انجام قربت. وفا به نذر واجب است. نذر به معصیت منعقد نمی‌شود. نذر مبهم کفاره یمین دارد. نذر اللجاج (بر عصیان یا مباح) کفاره دارد."},
+{t:"یمین - کفاره",x:"کفاره یمین: اطعام ده مسکین، یا کسوه ده مسکین، یا عتق رقبه. اگر نتوانست: روزه سه روز. کفاره بر حنث (شکستن قسم) واجب می‌شود نه بر عقد."},
+{t:"حیض - احکام تفصیلی",x:"مبتدأه مميزة: تمییز معتبر است. مبتدأه غیر ممیزه: عادتها شش یا هفت روز. معتادة: به عادتها رجوع می‌کند. متحیره: تحیض در هر ماه شش یا هفت روز و باقی استحاضه."},
+{t:"نفقه - واجب",x:"نفقه واجب: نفقه زوجه (مسکن، خوراک، کسوه، خادم برای من تخدم)، نفقه اقارب (اصول و فروع با شرط فقر و نسب)، نفقه مملوک. نفقه زوجه دین است در ذمه زوج."},
+{t:"رضاع - احکام",x:"رضاع موجب تحریم مثل نسب است. شرط: در دو سال اول، پنج رضعه مشبعه. رضیع، مرتضع، و اقارب مرضعه محارم می‌شوند. زوج المرضعه مثل اب رضاعی است."},
+{t:"حضانت - احکام",x:"حضانت حق مادر است اولاً ثم ام الام ثم الاب. حضانت مادر ساقط می‌شود با زواج از اجنبی، رده، فسق موثر. حضانة الذکر تنتهی بسبع، والانثی ببلوغ."},
+{t:"سفر - احکام",x:"سفر طویل (فوق مسافة القصر) یبیح: قصر، جمع، فطر، مسح خفین ثلاثة أیام. أمور السفر: لا یجوز للمرأة سفر طویل بلا محرم. یستحب السفر یوم الخمیس."},
+{t:"لباس - احکام",x:"تحریم حریر علی الرجال الا لضرورة. تحریم الذهب علی الرجال الا خاتم الفضة. ستر العوره واجب. لبس الاسود مباح. النهی عن اسبال الازار للرجل تحت الکعبین خیلاء."},
+{t:"آداب الطعام",x:"یستحب: التسمیة عند الاکل، الاکل بالیمین، الاکل مما یلیک، عدم النفخ فی الطعام، الحمد بعد الاکل. یکره: الاکل متکئاً، الشرب من فم الاناء. یحرم: الاکل علی آنیة الذهب والفضة."},
+{t:"صلاة الجنازة",x:"صلاة الجنازة فرض کفایة. أرکانها: النیة، أربع تکبیرات، قراءة الفاتحة، الصلاة علی النبی ﷺ، الدعاء للمیت، السلام. تصح علی القبر والغائب. یستحب الإسراع بالجنازة."},
+{t:"الدفن - احکام",x:"الدفن فرض کفایة. یجب دفن المسلم فی مقبرة المسلمین. یستحب اللحد. یوضع المیت علی جنبه الأیمن مستقبل القبلة. تحریم نبش القبر الا لضرورة. زیارة القبور سنة للرجال."},
+{t:"صلاة التطوع",x:"نوافل مؤکده: رواتب (سنت قبلیه و بعدیه)، تهجد، وتر (واجب عند ابی حنیفه، سنت مؤکده عند الشافعی). نوافل غیر مؤکده: ضحی، تحیة المسجد، صلاة الاستخاره. الوتر رکعة واحدة او ثلاث او اکثر."},
+{t:"الاعتکاف",x:"اعتکاف سنت است. شرط: مسجد، نیت، مسلمان مميز. اعتکاف واجب با نذر. خروج از مسجد بدون ضرورت مبطل اعتکاف است. اعتکاف در العشر الاخیر من رمضان مستحب مؤکد است."},
+{t:"نماز مریض",x:"مریض نماز می‌خواند به هر حالتی که می‌تواند: قیام، قعود، اضطجاع، ایماء. ترتیب: قیام ثم قعود ثم اضطجاع ثم ایماء. لا یسقط الصلاة عن المکلف ما دام العقل."},
+{t:"فقه المواریث - عول",x:"عول: زیادة سهام الفروض علی أصل المسأله. مثاله: زوج وأختان - الأصل ۶، سهامها ۷، فتعول إلی ۷. العول فی المذهب الشافعی معمول به خلافاً لابن عباس."},
+{t:"فقه المواریث - رد",x:"رد: إعادة الفاضل بعد الفروض علی أصحاب الفروض بنسبة سهامهم. لا یرد علی الزوجین. مثاله: أم وبنت - أصل المسأله ۶، سهامها ۴، یرد الباقی علیهما."},
+{t:"أحکام المسجد",x:"یجب احترام المسجد وصونه من النجاسات والقاذورات. یحرم دخول الجنب والحائض والنفساء. یستحب دخوله بالرجل الیمنی والخروج بالیسری. تحریم البیع والشراء فیه. اعتکاف فیه مشروع."},
+{t:"احکام الولیمه",x:"ولیمه عروسی سنت مؤکده است. إجابة دعوتها واجبه. مدتها ثلاثة ایام اول. یستحب ان یشتمل علی لحم. لا یجب الاکل لمن صائم."},
+{t:"أحکام العقیقه",x:"عقیقه سنت مؤکده است. وقتها روز هفتم ولادت. مقدارها: دو گوسفند برای پسر، یک گوسفند برای دختر. یجوز تأخیرها. یستحب تسمیة المولود فی الیوم السابع."},
+{t:"أحکام الأضحیه",x:"اضحیه سنت مؤکده است از ده ذوالحجه تا آخر ایام تشریق. شرط: سالم از عیب فاحش. اقلها: جذع الضأن (یک ساله)، ثنی المعز (دو ساله)، بقر (دو ساله). یجوز الاشتراک فی البدنة والبقرة."},
+{t:"أحکام الصداق",x:"الصداق: المهر الذی یعطیه الزوج للزوجة. لا حد لأقله ولا لأکثره فی المذهب الشافعی. تملکه الزوجة بالعقد وتستقره بالدخول. یتنصف بالطلاق قبل الدخول."},
+{t:"احکام النظر",x:"یحرم علی الرجل النظر الی عورة الاجنبیة ولو بغیر شهوة. یحرم علی المرأة النظر الی عورة الاجنبی. ینظر الطبیب الی المریض بقدر الحاجة. ینظر الشاهد والقاضی للضرورة."},
+{t:"احکام الخلوة",x:"الخلوة بالاجنبیة حرام. الاستئذان علی المحارم واجب فی الاوقات الثلاثة. العورة بین الزوجین لا حد لها. عورة المرأة امام النساء المسلمات من السرة الی الرکبة."},
+{t:"احکام الصلح",x:"الصلح مشروع فی الحقوق المالیة والجنائیة. لا یحل صلح أحل حراماً أو حرم حلالاً. صلح الانکار جائز. الصلح علی القصاص جائز ویسقطه."},
+{t:"احکام الکفاله",x:"کفاله: ضم ذمة الضامن الی ذمة المضمون عنه. لا یبرأ المضمون عنه الا بإبراء الدائن. رجوع الضامن علی المضمون عنه اذا ادی عنه باذنه. تصح الکفاله بالبدن."},
+{t:"احکام الحواله",x:"حواله: نقل الدین من ذمة الی ذمة. تبرأ ذمة المحیل اذا قبل المحال. یشترط رضی المحال. تصح علی الدین المثلی. لا یرجع المحال الی المحیل الا باعساره."},
+{t:"احکام الرهن",x:"رهن: وثیقة بالدین. المرهون ید امانة لا ضمان. یجوز الانتفاع بالمرهون باذن الراهن. ینفک الرهن بادائها الدین. المرهون لا یباع الا باذن المالک."},
+{t:"احکام المزارعة والمساقاة",x:"مزارعه: شرکت در زراعت با زمین از یکی و عمل از دیگری با سهم معلوم. مساقاة: آبیاری اشجار با سهم معلوم از ثمره. هر دو در مذهب شافعی صحیح است."},
+{t:"احکام الجعاله",x:"جعاله: التزام عوض علی عمل معلوم او مجهول من شخص غیر معین. یجوز العمل من الجانبین. یستحق الجعل باتمام العمل. الجعالة جائزة عند الشافعیة خلافاً للحنفیة."},
+{t:"احکام الوصایة",x:"وصی: من عهد الیه بتنفیذ الوصیة. یشترط: امانت، قدرت. للوصی تصرف فی مال المحجور علیه بالمصلحة. لا یتصرف الوصی فی مال الیتیم الا بالاحظ."},
+{t:"احکام الحجر",x:"حجر: منع من التصرف فی المال. محجور علیهم: صبی، مجنون، سفیه، مفلس، مریض مرض الموت (فی الثلث). للقاضی الحجر علی السفیه والمفلس."},
+{t:"احکام الشفعة",x:"شفعه: حق الشریک فی اخذ حصة الشریک الذی باع. شرط: الشرکة فی العقار. تجب علی الفور علم بالبیع. ثمن الشفعة مثل الثمن الاصلی. لا شفعة فی المنقولات."},
+{t:"احکام السلم",x:"سلم: بیع موصوف فی الذمة بثمن معجل. شرط: وصف المسلم فیه وصفاً کافیاً، تعجیل الثمن فی المجلس، بیان الاجل. لا یجوز رأس المال سلعة. لا یصح التصرف فی المسلم فیه قبل القبض."},
+{t:"احکام الاستصناع",x:"استصناع: طلب صنع شیء بمواد الصانع. عند الشافعیة هو سلم فیشترط له شروط السلم. یجب وصف المصنوع وصفاً دقیقاً. خیار الرؤیة ثابت للمستصنع."},
+{t:"احکام الوقف الخاص",x:"وقف خاص: حبس علی شخص معین او جهة معینة. یجب أن تکون الجهة مباحة. ینتهی الوقف الخاص بانقراض الموقوف علیهم. بعد الانقراض یصرف فی وجوه الخیر."},
+{t:"احکام الاقرار",x:"اقرار: اخبار بحق علی نفسه. شرط: تکلیف، اختیار، لفظ. لا یصح اقرار بما یستحیل عادة. الرجوع عن الاقرار لا یقبل فی حقوق الآدمیین. یقبل فی الحدود قبل اجرائها."},
+{t:"احکام اللقطة التفصیلی",x:"لقطة ذات قیمة: تعریف سنة. ثم هی للملتقط یستعملها او یتصدق بها. ضمان الرقبة. لقطة لا قیمة لها: یأخذها بلا تعریف. لقیط مجهول النسب: حکمه حریت واسلام اذا وجد فی دار الاسلام."},
+{t:"احکام النفقات",x:"نفقة ذوی الأرحام: واجبة للاصول والفروع بشرط الفقر والنسب والقدرة. لا نفقة للاخوة والأعمام فی المذهب الشافعی. نفقة المملوک واجبة علی السید. نفقة الحیوان واجبة علی مالکه."},
+{t:"احکام الدعوی",x:"دعوی صحیحة: خصم یصح خطابه، مدعی به معلوم، ادعاء علی معین. البینة علی المدعی والیمین علی المدعی علیه. لا تصح الشهادة علی الشهادة الا لعذر. القضاء بالنکول جائز."},
+{t:"احکام القسمة",x:"قسمة: تعیین حصص الشرکاء. قسمة الاجبار: فی المتماثلات اذا طلبها احد الشرکاء. قسمة التراضی: فیما لا یحتمل القسمة. القرعة وسیلة التعیین. قسمة الرد: مع التعویض."},
+{t:"فقه البنوک الاسلامیة",x:"بانک اسلامی باید از ربا پرهیز کند. صیغ الجائزة: مضاربة، مرابحة، اجارة، استصناع، سلم. لا یجوز الفائدة الثابتة علی القروض. الخسارة تقع علی صاحب المال فی المضاربة."},
+{t:"احکام التأمین",x:"تأمین تجاری: محل خلاف. اکثر العلماء المعاصرین یحرمونه لوجود الغرر والمیسر. التأمین التعاونی (الإسلامی): جائز. اساسه التبرع والمشارکة. لجنة الفقه الاسلامی اجازت التأمین التعاونی."},
+{t:"فقه الزکاة المعاصر",x:"اختلف العلماء فی زکاة الراتب: منهم من اوجبها (ابن عثیمین وآخرون)، ومنهم من لم یوجبها. زکاة الاسهم: تجب علی ما تجب فیه الزکاة من انشطة الشرکة. زکاة الدیون: تجب علی الدین القابل للاسترداد."},
+{t:"احکام الجراحة والطب",x:"الطب فرض کفایة. التداوی مباح ومستحب عند اکثر العلماء. الاستئصال للضرورة جائز. نقل الاعضاء: جائز بشروط. الختان واجب عند الشافعیة للذکر والانثی (لکن للانثی تقلیل لا استئصال)."},
+{t:"فقه الطلاق المعاصر",x:"الطلاق بالثلاث دفعة واحدة: یقع واحدة عند ابن تیمیة وقولاً فی المذهب، ویقع ثلاثاً عند اکثر الشافعیة. طلاق الغضبان: لا یقع اذا بلغ حد الاغلاق. الطلاق بالتلفون والرسائل: یقع."},
+{t:"فقه النوازل - الاقتصاد",x:"المضاربة الحدیثة: جائزة. صنادیق الاستثمار الاسلامیة: جائزة بشروط. البیع بالتقسیط: جائز والزیادة للتأجیل جائزة اذا سمیت فی العقد لا بعد التاخیر. بطاقات الائتمان: جائزة بشروط."},
+{t:"احکام الیتیم",x:"رعایة الیتیم فرض کفایة. للوصی التصرف فی مال الیتیم بالمصلحة. یحرم اکل مال الیتیم ظلماً. اذا بلغ الیتیم رشیداً وجب تسلیم ماله الیه. اجر کافل الیتیم عظیم."},
+{t:"احکام الزوجة الناشز",x:"ناشزه: زنی که از حقوق واجب شوهر امتناع کند. تسقط نفقتها وکسوتها ومسکنها. للزوج وعظها ثم هجرانها فی المضجع ثم ضربها غیر مبرح. اذا تابت عادت حقوقها."},
+{t:"احکام العدة",x:"عدة مطلقه مدخول بها: ثلاثة قروء. عدة الآیسة والصغیرة: ثلاثة أشهر. عدة المتوفی عنها: أربعة أشهر وعشر. عدة الحامل: وضع الحمل. یحرم خروج المعتدة من بیتها إلا لضرورة."},
+{t:"احکام الحضانة التفصیل",x:"حضانة الطفل: أمه ثم أمهاتها ثم أبوه ثم أمهاته. تسقط الحضانة بالزواج من أجنبی. مذهب الشافعی: للغلام حتی سبع ثم هو بالخیار، وللبنت حتی تتزوج ویدخل بها."},
+{t:"احکام الولایة علی المال",x:"ولی المال: الاب ثم وصیه ثم الجد ثم القاضی. للولی التصرف فی مال المولی علیه بالمصلحة. تنتهی ولایة المال ببلوغ الرشد. للقاضی رفع الولایة عند الضرورة."},
+{t:"احکام الکتابة والمراسلة",x:"العقود بالکتابة جائزة عند وجود القرینة. البرقیات والفاکس والبرید الالکترونی کالکتابة. الاستثناء: لا یصح عقد الزواج بالمراسلة دون شاهدین. العقود التجاریة بالکترونیاً جائزة."},
+{t:"احکام الشعر والفنون",x:"الشعر مباح اذا خلا من المحرم. الغناء بآلات اللهو محرم. الغناء بدون آلة: محل خلاف والاکثر علی الاباحة. التصویر: الصور بالید محرمة للذوات، والتصویر الفوتوغرافی محل خلاف. الخط والزخرفة حلال."},
+{t:"احکام الحیل الفقهیة",x:"الحیل الفقهیة التی تحقق مقاصد الشریعة جائزة. الحیل التی تتخذ وسیلة لاسقاط الواجبات او ابطال الحقوق محرمة. مذهب ابن القیم: سد الذرائع. مذهب الشافعی: اعتبار المآلات."}
+];
+
+const SHUBUHAT_DATA=[
+{t:"شبهه چند همسری",x:"اسلام تعدد زوجات را به چهار همسر محدود کرد در حالی که پیش از اسلام نامحدود بود. شرط اصلی عدالت است. این اجازه است نه فریضه. در شرایط خاص مثل جنگ و بیوگی زیاد حکمت دارد. غرب روابط خارج ازدواج را می‌پذیرد اما ازدواج رسمی با مسئولیت را رد می‌کند."},
+{t:"شبهه حجاب",x:"حجاب کرامت است نه ستم. اسلام زن را از ابزار شدن برای لذت چشمی آزاد کرد. آمارها نشان می‌دهد زنان محجبه بالاترین سطح تحصیل را دارند. تحمیل برهنگی به نام آزادی هم نوعی اجبار است. حجاب انتخاب آگاهانه زن مسلمان است."},
+{t:"شبهه جهاد",x:"جهاد دو نوع است: جهاد نفس (اکبر) و جهاد دفاعی. لا إکراه فی الدین. تاریخ اسلام نشان می‌دهد مسیحیان و یهودیان قرن‌ها در صلح زیستند. کشتن غیرنظامیان در اسلام حرام است. اعمال افراطیون مخالف صریح احکام اسلام است."},
+{t:"شبهه علم و دین",x:"اسلام اولین دین است که طلب علم را فریضه دانست. تمدن اسلامی پیشرو علوم پزشکی، ریاضی، نجوم بود. ابن سینا، ابن هیثم، خوارزمی پایه علم مدرن را گذاشتند. قرآن مکرراً به تعقل و مشاهده دعوت می‌کند."},
+{t:"شبهه حقوق غیرمسلمانان",x:"اسلام ذمیان را با حقوق کامل محافظت می‌کند. عمر هنگام مرگ وصیت کرد به ذمیان احترام گذاشته شود. در اندلس اسلامی مسیحیان و یهودیان آزادانه عبادت می‌کردند. لا ینهاکم الله عن الذین لم یقاتلوکم."},
+{t:"شبهه برده‌داری",x:"اسلام برده‌داری را تدریجاً محدود و منسوخ کرد. آزادکردن برده بهترین کفاره گناهان شد. بلال حبشی مؤذن پیامبر شد. برده‌داری مدرن در غرب تا قرن ۱۹ با ستمگری ادامه داشت. اسلام حقوق کامل برای بردگان تعیین کرد."},
+{t:"شبهه احکام جزایی",x:"حدود شروط سختی دارد که اجرایشان را نادر می‌کند. اثبات زنا نیاز به چهار شاهد عینی دارد. هدف اصلی بازدارندگی است. در جامعه‌ای که حقوق اقتصادی تأمین شود سرقت نادر می‌شود. آمار جرم در کشورهای غربی بسیار بالاتر است."},
+{t:"شبهه اسلام و دموکراسی",x:"اصل شورا با دموکراسی قابل جمع است. خلافت راشده با مشورت و انتخاب بود. اسلام حقوق اساسی انسان را ۱۴ قرن قبل از اعلامیه جهانی تضمین کرد. عدالت، آزادی عقیده در حدود اخلاق عمومی، حق مالکیت از اصول اسلامی است."},
+{t:"شبهه قرآن و تحریف",x:"قرآن تنها کتاب مقدس است که ۱۴ قرن بدون کوچکترین تغییر حفظ شده. میلیون‌ها حافظ آن را از بر دارند. نسخه‌های قرن اول هجری با قرآن امروز یکسان است. مستشرقان غربی به این اعجاز حفظ اعتراف کرده‌اند."},
+{t:"شبهه پیامبر و عایشه",x:"ازدواج با عایشه باید در بستر زمانی خود بررسی شود. در جوامع کهن سن بلوغ ملاک ازدواج بود. عایشه برجسته‌ترین محدثه اسلام شد. این ازدواج حکمت‌های دینی داشت. سن ازدواج در اروپا تا قرن ۱۹ همینگونه بود."},
+{t:"شبهه خشونت در قرآن",x:"آیات قتال در قرآن در سیاق دفاع از ستمدیدگان است نه پیشروی. آیة السیف (توبه:۵) در سیاق پیمان‌شکنان مشخص نازل شده. آیه‌های عفو و صلح در قرآن بیشتر از آیه‌های قتال است. الاسلام دین سلام."},
+{t:"شبهه اسلام و آزادی عقیده",x:"لا إکراه فی الدین (بقره:۲۵۶). اسلام آزادی وجدان را تضمین کرده. مرتد در اسلام در حال ارتداد صرف کشته نمی‌شود بلکه حکم پیچیده‌تری دارد. علمای معاصر مثل شیخ رمضان البوطی می‌گویند مرتد صرف بدون حرابه کشته نمی‌شود."},
+{t:"شبهه اسلام و زن",x:"اسلام حقوق زن را در قرنی اعلام کرد که زن در اروپا ملک شوهر بود. حق ارث، حق مالکیت، حق تعلیم از اول اسلام بود. ام المؤمنین خدیجه تاجر بود. عایشه معلم و سیاستمدار بود. نساء اسلام در تاریخ پیشرو بودند."},
+{t:"شبهه احادیث ضعیف",x:"علم درایه و رجال حدیث دقیق‌ترین سیستم تاریخی برای تأیید روایات است. هر حدیثی نقد شده و درجه‌بندی دارد: صحیح، حسن، ضعیف، موضوع. علمای حدیث ضعاف و کذابان را شناسایی کردند. صحیحین بالاترین درجه صحت را دارند."},
+{t:"شبهه مساوات در اسلام",x:"اسلام مساوات در کرامت انسانی را اعلام کرد: لا فضل لعربی علی اعجمی الا بالتقوی. تفاوت در ارث و شهادت برای جنسیت بر اساس حکمت و نظام خانواده است نه تحقیر. مرد دو برابر ارث می‌برد اما دو برابر مسئولیت مالی دارد."},
+{t:"شبهه اسلام و بومیان آمریکا",x:"اسلام به امریکا نرسید تا بر بومیان ستم کند. مسلمانان در تاریخ سازنده تمدن بودند نه مستعمره‌ساز. استعمار اروپایی مسیحی بود که میلیون‌ها بومی را کشت. اسلام اقوام مختلف را در صلح جمع کرد."},
+{t:"شبهه القرآن والعلم الحدیث",x:"قرآن کتاب هدایت است نه کتاب علوم طبیعی. با این حال اشارات علمی قرآن شگفت‌انگیز است: مراحل جنین، دوران کیهان، لایه‌های زمین. دکتر کیت مور جنین‌شناس گفت اطلاعات قرآن درباره جنین با علم کاملاً موافق است."},
+{t:"شبهه الاسلام والارهاب",x:"تروریسم محکوم در اسلام است. النبی ﷺ نهی عن قتل النساء والاطفال والشیوخ. کبائر اهل دین گروه‌های افراطی را علناً محکوم کردند. سازمان‌های اسلامی بزرگ تروریسم را بدعت و حرام دانستند. خشونت به نام اسلام توسط جهل یا سیاست توجیه می‌شود نه دین."},
+{t:"شبهه لماذا یوجد الشر",x:"مسئله شر (تئودیسه): خدا شر را آفریده تا اختیار و امتحان باشد. الدنیا دار ابتلاء لا دار جزاء. شر نسبی است. بدون شر خیر معنا ندارد. آزادی اراده اقتضای وجود شر دارد. الصبر علی البلاء عبادة. العاقبة للمتقین."},
+{t:"شبهه الله وخلق الکون",x:"نظریه بیگ بنگ با آیه: أَوَلَمْ یَرَ الَّذِینَ کَفَرُوا أَنَّ السَّمَاوَاتِ وَالْأَرْضَ کَانَتَا رَتْقًا فَفَتَقْنَاهُمَا سازگار است. کیهان نشانه آفریننده است نه دلیل نبودش. نظم کیهانی دقیق محال است بی‌علت باشد. برهان کلامی و برهان نظم دلائل وجود خداوند است."},
+{t:"شبهه الاسلام والغرب",x:"تمدن غرب از علم اسلامی تغذیه کرد. دانشگاه اول دنیا القرویین در مراکش توسط مسلمانان ساخته شد. قانون بین‌الملل مبتنی بر فقه اسلامی در بسیاری موارد است. تعارض فرضی بین اسلام و غرب برساخته است."},
+{t:"شبهه نبوة محمد ﷺ",x:"دلائل نبوت: قرآن اعجاز ادبی و علمی. نبی امی بود. اخبار غیبی تحقق یافت. شخصیت اخلاقی بی‌نظیر. تأثیر جهانی. مایکل هارت نبی اسلام را اثرگذارترین شخص تاریخ دانست."},
+{t:"شبهه عذاب الله",x:"عذاب الهی عدل است نه ظلم. الله اعذر قبل اعاقب. رسالت الانبیاء برای اتمام حجت. الجنة والنار نتیجة الاختیار. رحمة الله وسعت کل شیء. التوبة مقبولة حتی آخر لحظة."},
+{t:"شبهه الاسلام والتسامح",x:"فَلا إِکْرَاهَ فِی الدِّینِ. مسیحیان اورشلیم تحت حکم مسلمانان آزاد بودند. یهودیان از اروپای مسیحی فرار کرده به بلاد اسلامی پناه بردند. عمر بن خطاب کلید کلیسای قیامه را به مسیحیان داد."},
+{t:"شبهه الاسلام والحضارة",x:"در قرون ۸ تا ۱۳ بغداد مرکز علم جهان بود. بیت الحکمة ترجمه و تولید علم کرد. جابر بن حیان پدر شیمی. ابن الهیثم پدر بصریات. ابن خلدون پدر جامعه‌شناسی. فارابی پدر فلسفه سیاسی اسلامی."},
+{t:"شبهه الایمان والعقل",x:"ایمان و عقل در اسلام متضاد نیستند. قرآن مکرراً دعوت به تعقل می‌کند: أفلا تعقلون. علمای اسلام در کلام و فلسفه پیشرو بودند. ابن رشد (أвероэ) به اروپا ارسطو را برگرداند. الایمان العمی لیس من الاسلام."},
+{t:"شبهه المسلمون والتخلف",x:"تخلف مسلمانان معاصر نه به اسلام بلکه به استعمار، جهل و ترک اسلام واقعی مربوط است. ژاپن و کره جنوبی بدون دین الهی پیشرفت کردند. مسلمانان امروز در علوم و فناوری پیشرفت‌های بزرگ دارند. ترکیه، مالزی، اندونزی شواهد پیشرفت هستند."},
+{t:"شبهه الاسلام والبیئة",x:"اسلام اول حامی محیط زیست بود: لا ضرر ولا ضرار. النبی ﷺ نهی عن قطع الاشجار فی الحرب. الارض امانة لدی الانسان. فقه بیئی اسلامی گسترده است. مفهوم استخلاف (جانشینی خدا) مسئولیت حفظ طبیعت را ایجاد می‌کند."},
+{t:"شبهه الاسلام والسیاسة",x:"اسلام نظام سیاسی کامل ندارد بلکه اصول دارد: عدالت، شورا، مصلحة عامة. الدیمقراطیة الاسلامیة ممکنة. اسلام با هیچ نظام سیاسی خاصی همانند نیست. ولی الامر المنتخب اسلامی‌تر از حاکم دیکتاتور است."},
+{t:"شبهه القصص القرآنیة",x:"قصص قرآن هدفش هدایت است نه تاریخ‌نگاری. با این حال باستانشناسی بسیاری از آن‌ها را تأیید کرده: فرعون، عاد، ثمود. کشف مومیایی فرعون توسط علم و تطابق آن با قرآن (فانجیناک ببدنک) معجزه است."},
+{t:"شبهه الاحکام المتغیرة",x:"احکام اسلامی بر دو قسم است: ثوابت (عقاید، عبادات) و متغیرات (معاملات، سیاسات). فقه الاولویات واجد اهمیت است. مبدأ المصلحة المرسلة اجازه تطور را در محدوده شریعت می‌دهد. اجتهاد باب مفتوح است."},
+{t:"شبهه اسلام والفن",x:"هنر اسلامی یکی از غنی‌ترین هنرهای بشری است: معماری (الحمراء، تاج محل، ایاصوفیه)، خطاطی، موسیقی مقامی، شعر. ممنوعیت تصویر ذوات حکمت دارد. هنر اسلامی تمرکز روح را تقویت می‌کند نه حواس مادی را."},
+{t:"شبهه الاسلام والمرأة الحدیثة",x:"زن مسلمان می‌تواند تحصیل کند، کار کند، رأی بدهد. خدیجه تاجر، عایشه مفتی، زبیده مهندس. فقه اسلامی حق طلاق (خلع)، ارث، مالکیت مستقل زن را تضمین کرده. مشکلات جوامع مسلمان فرهنگی است نه دینی."},
+{t:"شبهه موقف الاسلام من الیهود",x:"اسلام با یهودیان به عنوان کفار همان گونه رفتار می‌کند که با سایر کفار. بنی اسرائیل انبیاء زیادی داشتند که قرآن از آن‌ها تعریف می‌کند. نبی ﷺ صلح حدیبیه و میثاق المدینة با یهود بست. مشکلات سیاسی فلسطین دینی-قومی نیستند."},
+{t:"شبهه الاسلام والعنف الاسری",x:"ضرب الزوجة المذکور فی القرآن: ضرب غیر مبرح و آخر وسیلة بعد الوعظ والهجر. اکثر الفقهاء علی کراهته. الحدیث: خیرکم خیرکم لاهله. ظاهرة العنف الاسری موجودة فی کل ثقافات العالم ولیست خاصة بالاسلام."},
+{t:"شبهه سورة التوبة وقتل المشرکین",x:"آیه برائت در باره مشرکانی است که عهد شکستند. السیاق التاریخی واضح. بلافاصله استثناء آمده: اگر پناه بخواهند بده. آیات سلام و عفو و مصالحه در قرآن فراوان است. الاقتطاع من السیاق تدلیس."},
+{t:"شبهه الاسلام والتطرف",x:"تطرف پدیده‌ای چند وجهی است: سیاسی، اقتصادی، اجتماعی. علمای اسلام همواره علیه تطرف بودند. الازهر، دارالعلوم دیوبند، مراکز فقه اسلامی تروریسم را محکوم کردند. تطرف نتیجه جهل و سیاسیت‌زدگی است نه آموزه اسلامی."},
+{t:"شبهه حرق الکتب",x:"آتش‌زدن کتابخانه‌ها توسط مسلمانان در تاریخ: اکثر این روایات ساختگی یا اغراق‌آمیز است. سوزاندن کتابخانه اسکندریه ربطی به مسلمانان ندارد و قبل از اسلام بوده. مسلمانان کتاب‌های یونان را ترجمه و حفظ کردند."},
+{t:"شبهه الاسلام والأقلیات",x:"اقلیت‌های دینی تحت حاکمیت اسلامی قرون وسطی از آزادی بیشتری نسبت به اروپای آن دوران برخوردار بودند. جزیه بدل خدمت نظامی بود. اهل ذمه حقوق مدنی کامل داشتند. مشکلات اقلیت‌ها در جهان اسلام امروز سیاسی است."},
+{t:"شبهه القضاء والقدر والمسئولیة",x:"قضا و قدر با مسئولیت انسانی تناقض ندارد. الله علم مسبق دارد اما مجبور نمی‌کند. الانسان حر مختار. المسئولیة علی قدر الاختیار. عقیده جبر خلاف نص قرآن است: لا یُکَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا."},
+{t:"شبهه الموقف من المثلیة",x:"اسلام همجنسگرایی را حرام می‌داند بر اساس فطرت انسانی و مصلحت جامعه. این موقف اکثر ادیان الهی است. قانون طبیعی و فلسفه سنتی هم آن را نادرست می‌دانند. اسلام شخص را محکوم نمی‌کند بلکه عمل را. الرحمة للجمیع والمسئولیة للعمل."},
+{t:"شبهه الاسلام والحریة الفردیة",x:"اسلام آزادی فردی را در چارچوب مصلحت عامه محترم می‌شمارد. لا ضرر ولا ضرار. آزادی بدون ضابطه هرج و مرج است. هر قانونی برخی آزادی‌ها را محدود می‌کند. اسلام تعادل بین فرد و جامعه را می‌جوید."},
+{t:"شبهه موقف الاسلام من الموسیقی",x:"اختلاف علما در موسیقی بزرگ است. تحریم: بر اساس احادیث. اباحه: ابن حزم، ابن رشد، شیخ غزالی معاصر. حرام قطعی: موسیقی مصاحب الفحش والمسکر والانحلال. المباح: الانشاد بدون آلات اللهو."},
+{t:"شبهه الاسلام والیوغا والتأمل",x:"تأمل اسلامی (ذکر، تفکر) اصیل است. یوغا ریشه هندوانه دارد. علمای اسلام: اگر مجرد ورزش است مباح، اگر مصحوب بعبادة غیرالله فحرام. الذکر والتدبر عبادة إسلامیة اصیلة."},
+{t:"شبهه الاسلام والبیع والشراء",x:"اسلام اقتصاد بازار را می‌پذیرد. الکسب الحلال فریضة بعد الفریضة. نبی ﷺ تاجر بود. الاقتصاد الاسلامی یقوم علی العدالة والشفافیة. ممنوعیت ربا لانه یزید الثروة دون عمل. الانتاج والتجارة مشروعان."},
+{t:"شبهه الله والمعجزات",x:"معجزات دلیل نبوت است. علم تجربی تنها جنبه مادی را می‌سنجد. معجزه خرق عادت توسط الله القادر است نه نقض قانون طبیعت. قرآن اعجاز ادبی تا ابد. المعجزات الکبری موثقة تاریخیاً."},
+{t:"شبهه الاسلام والنزاعات الطائفیة",x:"نزاع شیعه-سنی سیاسی-تاریخی است نه دینی ذاتی. هر دو فریق اصول اسلام را قبول دارند. استثمار این نزاع‌ها توسط قدرت‌های خارجی واضح است. علمای اسلام به وحدت دعوت می‌کنند. الاختلاف الفقهی رحمة."},
+{t:"شبهه الاسلام والحداثة",x:"حداثت صرف تغییر نیست بلکه تحقق مصالح انسانی است. اسلام با ثوابت خود و مرونت در متغیرات می‌تواند مدرن باشد. فقه المعاملات المعاصرة متطور. الاسلام صالح لکل زمان ومکان."},
+{t:"شبهه تعذیب فی الاسلام",x:"اسلام شکنجه را حرام می‌داند. النبی ﷺ نهی عن المثلة. التعذیب لانتزاع الاعتراف حرام وما ینتزع منه غیر حجة. ما یجری فی بعض الدول الاسلامیة من تعذیب مخالف للشریعة. حقوق المعتقل محفوظة فی الفقه الاسلامی."},
+{t:"شبهه اسلام والحریة الاقتصادیة",x:"اسلام ملکیت خصوصی را می‌پذیرد و از آن حمایت می‌کند. حق الملکیة من مقاصد الشریعة. الضرائب العادلة مشروعة. اقتصاد اسلامی تعادل بین آزادی و عدالت است. الاحتکار حرام. الاستثمار المنتج مشروع."},
+{t:"شبهه الاسلام والفلسفة",x:"فلاسفه مسلمان پیشرو بودند: الفارابی، ابن سینا، ابن رشد، الغزالی. مذهب شافعی با علم کلام سازگار است. علم کلام (الهیات اسلامی) توسعه یافته. الفلسفة الاسلامیة مزجت بین الوحی والعقل."},
+{t:"شبهه صورة النبی ﷺ",x:"ممنوعیت رسم تصویر پیامبر از باب احترام و جلوگیری از تبجیل مفرط است. آزادی بیان ضابطه دارد. توهین به مقدسات نفرت‌پراکنی است نه آزادی. جوامع غربی هم هتک حیثیت را محدود می‌کنند."},
+{t:"شبهه الاسلام وحقوق الطفل",x:"اسلام حقوق کودک را تضمین کرده: نفقه، تعلیم، رعایت. کودک آزاری حرام است. الیتیم در قرآن مکرراً ذکر شده. النبی ﷺ بچه‌ها را دوست داشت و احترام می‌گذاشت. الختان: محل خلاف اما بدون أذی اثبات‌شده."},
+{t:"شبهه الاسلام والشذوذ فی التفسیر",x:"قرآن به زبان عربی مبین نازل شده. علم تفسیر قواعد دقیق دارد. تفسیر به رأی مذموم است. تفاوت تفسیرها در مسائل فرعی نه اصول. مراجع تفسیری معتبر موجود است. هر کسی نمی‌تواند قرآن را تفسیر کند."},
+{t:"شبهه الاسلام والبیئة الاجتماعیة",x:"اسلام محیط سالم اجتماعی می‌سازد: حرمت رباخواری، منع احتکار، وجوب زکات، تشویق صدقه. مجتمع اسلامی مبتنی بر تکافل اجتماعی است. الاخوة الاسلامیة رابط قوی. لا یؤمن احدکم حتی یحب لاخیه ما یحب لنفسه."},
+{t:"شبهه الصلاة خمس مرات",x:"پنج نماز در روز نه کثیر بلکه ترازگر است. نماز یاد خدا در طول روز است. نماز استراحت روانی و تجدید نیرو. نماز از فحشا و منکر باز می‌دارد. نماز رابطة العبد بربه. حتی سکولارها مدیتیشن را توصیه می‌کنند."},
+{t:"شبهه الصیام والصحة",x:"روزه از نظر علمی فواید ثابت دارد: تجدید سلول، کاهش وزن، کنترل قند خون. رمضان مدرسه صبر و تزکیه است. الطب الحدیث یوصی بالصیام المتقطع. الاسلام سبق بهذه التوصیة ۱۴ قرناً."},
+{t:"شبهه الزکاة والربا",x:"زکات نظام عادلانه توزیع ثروت است. ربا ثروت را متمرکز می‌کند. زکات ۲.۵٪ سالانه برخلاف ربای ۱۰-۳۰٪ ماهانه. اقتصاددانان غربی از نظام مشابه زکات صحبت می‌کنند (ثروت‌مالیات). الزکاة تنمی المجتمع والربا یفقره."},
+{t:"شبهه اسلام و سنت پیامبر",x:"سنت پیامبر مکمل قرآن است. روش جمع‌آوری حدیث دقیق‌ترین روش تاریخ‌نگاری بشری است. ابن حجر العسقلانی صدها هزار راوی را بررسی کرده. سنت بدون قرآن ناقص است و قرآن بدون سنت غیرقابل عمل."},
+{t:"شبهه الجن والسحر",x:"وجود جن در قرآن صراحت دارد. سحر واقعی است: وَمَا یُعَلِّمَانِ مِنْ أَحَدٍ. العین الحق. الرقیة الشرعیة علاج مشروع. اسلام از توسل به جن و سحر نهی کرده. الطب العلمی منافی الرقیة الشرعیة نیست."},
+{t:"شبهه الاسلام والتنویر",x:"تنویر اسلامی پیش از تنویر اروپایی بود. عصر الذهب الاسلامی ۸-۱۳ قرن. الترجمة والتألیف والاختراع. انتقال علم از اسلام به اروپا از طریق اندلس. ابن رشد شارح ارسطو در اروپا. الفارابی صاحب المدینة الفاضلة."},
+{t:"شبهه الدعاء والمشیئة",x:"دعا عبادت است. لا ینافی القدر. الدعاء یغیر القدر (بإذن الله). الله یستجیب للدعاء بأحد ثلاث: اعطاء المطلوب، دفع ضر، أو تأجیل للآخرة. الدعاء تعبیر عن حاجة العبد وافتقاره لله."},
+{t:"شبهه الاسلام والنظافة",x:"اسلام دین طهارت است. الطهور شطر الایمان. الوضوء نظافة یومیة. الغسل نظافة دوریة. ازالة الاذی عن الطریق صدقة. الفم والانف والاذن والجلد مشمولة فی احکام الطهارة. الاسلام سبق فی قواعد النظافة."},
+{t:"شبهه الاسلام وحقوق الحیوان",x:"اسلام حقوق حیوانات را تضمین کرده. النبی ﷺ نهی عن الاذی للحیوان. الذبح باحسان. لا تسخروا الدواب فوق طاقتها. الاحسان فی القتل مطلوب. امرأة دخلت الجنة بسقی کلب. امرأة دخلت النار بحبس هرة."},
+{t:"شبهه رهبانیة الاسلام",x:"اسلام رهبانیت را رد می‌کند: لا رهبانیة فی الاسلام. الدنیا مزرعة الآخرة. العمل عبادة. البناء والزراعة والتجارة مشروعة بل مستحبة. التوازن بین الدنیا والآخرة مطلوب. من خیر العمل الاستغناء عن الناس."},
+{t:"شبهه الاسلام والتواضع",x:"التواضع فضیلة اسلامیة کبری. لا تمش فی الارض مرحاً. الکبر: من بطر الحق وغمط الناس. التواضع للأصغر والأکبر مطلوب. النبی ﷺ ضرب اعلی مثال فی التواضع. التواضع لا یتعارض مع الثقة بالنفس."},
+{t:"شبهه الاسلام والحسد والعین",x:"الحسد منهی عنه. العین الحق بنص حدیث. الحقد والغل من الصفات المذمومة. علاج الحسد: الذکر والدعاء والاستعاذة. تعلیم الاسلام عن الحسد سابق لعلم النفس الحدیث."},
+{t:"شبهه الاسلام والعقوبات البدنیة",x:"عقوبات اسلامی در سیاق نظام قضایی کامل است. حدود در غیاب عدالت اجتماعی قابل اجرا نیست. قاعده: درء الحدود بالشبهات. کشورهای غربی هم مجازات‌های بدنی داشتند. عقوبات اسلامی بازدارنده و عادلانه است."},
+{t:"شبهه الاسلام وقبول التنوع",x:"اسلام تنوع را نعمت می‌داند: وَجَعَلْنَاکُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا. اللغات والثقافات تنوع الهی. التوحید اساس الوحدة. الاختلاف فی الفروع رحمة. یعیش المسلمون فی کل دول العالم محافظین علی هویتهم."},
+{t:"شبهه وجود الله",x:"براهین وجود الله: برهان کلامی (کل حادث له محدث)، برهان نظم (الکون منظم)، برهان فطرة (الفطرة تقر بالله)، برهان العنایة والغایة. الالحاد لا یفسر وجود الکون. برهان اونطولوجی انسلم کانت."},
+{t:"شبهه الاسلام وانتشاره بالسیف",x:"اسلام انتشر اساساً بالتجارة والداعیة لا بالقوة. اندونزیا (اکبر الدول الاسلامیة) دخلها الاسلام بالتجار. افریقیا الغربیة بالدعوة. فتوحات الاسلامیة کانت تحریراً من الاستبداد. شواهد تاریخی بر داوطلبانه بودن اسلام آوردن."},
+{t:"شبهه الاسلام ورأس المال",x:"الاستثمار الحلال مشروع. رأس المال لا یجوز ترکیزه (الربا حرام، الاحتکار حرام). الزکاة تعید التوزیع. الاقتصاد الاسلامی یجمع بین حریة السوق والعدالة الاجتماعیة. البنوک الاسلامیة نموذج ناجح."},
+{t:"شبهه التفریق بین المسلمین وغیرهم",x:"اسلام بین مسلمان و غیرمسلمان در حقوق مدنی و انسانی فرق نمی‌گذارد. فرق در احکام عبادی است. الجزیة: ضریبة مقابل الحمایة لا مقابل الدین. الکافر الذی لا یقاتل معامل بالعدل والاحسان."},
+{t:"شبهه الاسلام والتعصب القومی",x:"اسلام قومیت را رد می‌کند: لا فضل لعربی علی اعجمی الا بالتقوی. التعصب القومی بدعة وفتنة. العروبة لیست شرط الاسلام. مسلمانان از هر نژاد و قومی اند. الهویة الاسلامیة فوق الهویة القومیة."},
+{t:"شبهه القرآن واستخدامه سیاسیاً",x:"استخدام القرآن سیاسیاً از صدر اسلام وجود داشته. قرآن خودش قواعد استخدام صحیح دارد. لا یحتج بالقرآن لمعصیة الله. کل من یستخدم القرآن لغرض دنیوی محاسب. العلماء حراس القرآن من التوظیف السیاسی."},
+{t:"شبهه الاسلام والحزن",x:"اسلام حزن را نفی نمی‌کند بلکه مدیریت آن را آموزش می‌دهد. الصبر عبادة. البکاء من رحمة الله. یجوز الحزن الا الجزع. الاسلام یوفر معنی للحیاة. الایمان بالقضاء والقدر یرفع القلق. الذکر والدعاء والعبادة علاج الاکتئاب."},
+{t:"شبهه موقف الاسلام من الکسب",x:"الکسب الحلال فریضة. العمل عبادة. الاغنیاء الصالحون افضل من الفقراء الصالحین طبق بعض العلماء. الغنی شکر والفقر صبر کلاهما فضیلة. لا کسل ولا توکل بلا عمل فی الاسلام. اعقل وتوکل."},
+{t:"شبهه الاسلام والارقام والاحصاء",x:"کثیر من الاحصاءات المنسوبة للاسلام مظللة. معدلات الجریمة، الفقر، التعلیم مرتبطة بالسیاسة لا الدین. دول اسلامیة مثل ترکیا ومالیزیا تنافس غربیاً. بعض الدول الاکثر سلاماً دول مسلمة (قطر، الامارات)."},
+{t:"شبهه الاسلام واللاهوت",x:"عقیدة الله فی الاسلام اکثر نقاءً: لا تشبیه ولا تعطیل. الله لا یشبه المخلوقات. الثالوث لا یوجد فی الاسلام. وحدانیة الله مطلقة. کل اسماء الله حسنی. الله القریب المستجیب لا الاله المتعالی البعید."},
+{t:"شبهه تقنین الشریعة",x:"تقنین الشریعة: قابل التطبیق مع الاخذ بمقاصد الشریعة. الفقه الاسلامی نظام قانونی متطور. الشریعة تحفظ المقاصد الخمسة: النفس والعقل والنسل والمال والدین. القوانین الوضعیة کثیراً ما تتوافق مع الشریعة."},
+{t:"شبهه الاسلام وابراز المشاعر",x:"ابراز المشاعر فی الاسلام مشروع. بکی النبی ﷺ علی ابنه. حزن علی اهله. فرح بالنصر. نهی الاسلام عن الجزع لا عن الشعور. الرحمة بالضعفاء والمحتاجین مطلوبة. الاسلام دین الوسطیة حتی فی المشاعر."},
+{t:"شبهه الاسلام وترک الدنیا",x:"الاسلام وسط: ولا تنس نصیبک من الدنیا. العمل والکسب عبادة. الزهد: عدم تعلق القلب بالدنیا لا ترکها. النبی ﷺ تزوج وتاجر وقاد الدول. المسلم فی الدنیا کالغریب. الدنیا ممر لا مقر."},
+{t:"شبهه الاسلام والمستقبل",x:"الاسلام له رؤیة للمستقبل: العدل، السلام، رفاه الجمیع. مفهوم الخلافة یمکن تطویره دیمقراطیاً. فقه النوازل یعالج قضایا المستقبل. الاسلام الرقمی وتطبیقات الفقه المعاصر نماذج. الحضارة الاسلامیة قادرة علی العودة."},
+{t:"شبهه دور المرأة فی الاسلام التاریخی",x:"نساء مسلمات بارزات فی التاریخ: خدیجة، عائشة، فاطمة، نسیبة بنت کعب (مقاتلة)، الشفاء بنت عبدالله (معلمة طب)، رابعة العدویة (صوفیة)، ست الوزراء (طبیبة). المرأة المسلمة التاریخیة لم تکن محبوسة."},
+{t:"شبهه الاسلام والعولمة",x:"الاسلام والعولمة: الاسلام نفسه حرکة عولمیة اولی. التجار المسلمون وحدوا الاسواق من الصین الی الاندلس. الثقافة الاسلامیة حضارة عالمیة. العولمة الحدیثة: الاسلام یقبل الانفتاح مع صون الهویة. لا تعارض بین الانفتاح والهویة."},
+{t:"شبهه الاسلام ورأی العلماء المخالف",x:"اختلاف العلماء رحمة. الاجتهاد المبنی علی دلیل مقبول. اختلاف المذاهب یدل علی ثروة فقهیة لا تناقض. لا یکفر بمسأله اجتهادیة. ادب الاختلاف واجب. البحث عن الحق واجب والتعصب مذموم."},
+{t:"شبهه المذاهب الفقهیة وتعددها",x:"المذاهب الاربعة کلها صحیحة ومبنیة علی دلیل. الاختلاف فروعی لا اصولی. المذاهب توسعة لا فرقة. المذهب الواحد لکل مسلم یکفیه. الانتقال بین المذاهب جائز عند الحاجة. الفقه الاسلامی اغنی منظومة قانونیة فی التاریخ."}
+];
+
+function highlight(text,query){if(!query.trim())return text;const rx=new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`,`gi`);return text.replace(rx,'<mark>$1</mark>');}
+
+function doSearch(data,query,resultsId,countId){
+  const results=document.getElementById(resultsId);
+  const countEl=document.getElementById(countId);
+  const q=query.trim();
+  const found=q?data.filter(item=>item.t.includes(q)||item.x.includes(q)):data;
+  countEl.textContent=found.length?`${found.length} موضوع یافت شد`:'';
+  if(!found.length){results.innerHTML='<div class="no-result">موردی یافت نشد. کلمه دیگری امتحان کنید.</div>';return;}
+  results.innerHTML=found.map(item=>`<div class="result-item"><div class="result-title">📖 ${highlight(item.t,q)}</div><div class="result-text">${highlight(item.x,q)}</div></div>`).join('');
 }
 
-const FIQH_SYSTEM = `شما یک دستیار آموزشی فقه اسلامی هستید که فقط و فقط بر اساس مذهب فقهی امام شافعی (مذهب شافعی) و با تکیه بر چارچوب کتاب «الفقه المنهجی علی مذهب الإمام الشافعی» (تألیف دکتر مصطفی خِن، مصطفی البُغا، علی شربجی) پاسخ می‌دهید.
-قواعد:
-۱. پاسخ را به زبان فارسی، روان و محترمانه بنویس.
-۲. حکم فقهی را دقیقاً بر اساس مذهب شافعی بیان کن و در صورت وجود اختلاف نظر در داخل خود مذهب شافعی (مثلاً قول جدید و قول قدیم امام شافعی)، به آن اشاره کن.
-۳. اگر سؤال خارج از حیطه فقه عملی است یا اطلاعات کافی نداری، صادقانه بگو و کاربر را به مشورت با عالم دین یا مفتی ارجاع بده.
-۴. از قطعیت بیش از حد در مسائل اختلافی پرهیز کن و لحن آموزشی و امانت‌دارانه داشته باش.
-۵. پاسخ را مختصر و ساختاریافته (حداکثر چند پاراگراف) ارائه بده، نه طولانی و enciclopedic.`;
+function searchFiqh(){doSearch(FIQH_DATA,document.getElementById('fiqhSearch').value,'fiqhResults','fiqhCount');}
+function searchShubuhat(){doSearch(SHUBUHAT_DATA,document.getElementById('shubuhatSearch').value,'shubuhatResults','shubuhatCount');}
 
-const SHUBUHAT_SYSTEM = `شما یک دستیار علمی هستید که به شبهات مطرح‌شده درباره اسلام پاسخ می‌دهید. رویکرد شما باید مشابه روش «موسوعة بیان الإسلام للرد علی الافتراءات والشبهات» باشد: ابتدا شبهه را منصفانه و دقیق بازگو کن، سپس با استدلال علمی، منطقی و مستند (قرآن، سنت صحیح، عقل، یا شواهد تاریخی) به آن پاسخ بده.
-قواعد:
-۱. پاسخ را به زبان فارسی، با لحنی آرام، علمی و غیرتهاجمی بنویس.
-۲. از اتهام‌زنی یا لحن تند نسبت به مخالفان پرهیز کن؛ هدف روشنگری است نه جدل.
-۳. در صورت وجود دیدگاه‌های مختلف میان علما درباره پاسخ شبهه، به‌طور منصفانه اشاره کن.
-۴. منابع مفهومی پاسخ را در صورت امکان نام ببر (مثلاً آیه، حدیث، یا اجماع علما) بدون نقل مستقیم طولانی.
-۵. پاسخ را ساختاریافته و نه بیش از حد طولانی ارائه بده.`;
-
-async function handleAsk(inputId, btnId, loadingId, answerId, systemPrompt){
-  const input = document.getElementById(inputId);
-  const question = input.value.trim();
-  if(!question) return;
-  const loading = document.getElementById(loadingId);
-  const answerBox = document.getElementById(answerId);
-  const btn = document.getElementById(btnId);
-  loading.classList.add('show');
-  answerBox.classList.remove('show');
-  btn.disabled = true;
-  try{
-    const answer = await askClaude(systemPrompt, question);
-    answerBox.textContent = answer;
-    answerBox.classList.add('show');
-  }catch(err){
-    answerBox.textContent = 'خطایی رخ داد. لطفاً اتصال اینترنت را بررسی کرده و دوباره تلاش کنید.';
-    answerBox.classList.add('show');
-  }finally{
-    loading.classList.remove('show');
-    btn.disabled = false;
-  }
-}
-
-document.getElementById('fiqhAsk').addEventListener('click', ()=>{
-  handleAsk('fiqhInput','fiqhAsk','fiqhLoading','fiqhAnswer', FIQH_SYSTEM);
-});
-document.getElementById('shubuhatAsk').addEventListener('click', ()=>{
-  handleAsk('shubuhatInput','shubuhatAsk','shubuhatLoading','shubuhatAnswer', SHUBUHAT_SYSTEM);
-});
+document.getElementById('fiqhSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchFiqh();});
+document.getElementById('shubuhatSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchShubuhat();});
 </script>
 </body>
 </html>
