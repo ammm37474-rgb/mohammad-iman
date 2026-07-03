@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>محمد ایمان | قبله‌نما، تسبیح و پاسخ‌های فقهی</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#0c2e2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="محمد ایمان">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--teal-950:#07211f;--teal-900:#0c2e2b;--teal-800:#123f3a;--teal-700:#1a554d;--gold-500:#c8992f;--gold-300:#e3c270;--parchment:#f3ead4;--parchment-dim:#e6dabe;--maroon:#7a2331;--ink:#1c1410;--radius:18px;}
@@ -419,6 +427,12 @@ function searchShubuhat(){doSearch(SHUBUHAT_DATA,document.getElementById('shubuh
 
 document.getElementById('fiqhSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchFiqh();});
 document.getElementById('shubuhatSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchShubuhat();});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>
