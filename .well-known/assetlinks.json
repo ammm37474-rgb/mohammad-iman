@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "ir.mohammadiman.app",
+        "sha256_cert_fingerprints": ["76:03:EC:6E:EF:24:7E:F9:E2:4E:D2:FB:19:86:1F:AA:3F:E7:DD:FB:F5:4E:D3:FC:0D:DD:3B:22:2A:AA:9D:71"]
+      }
+    }]
